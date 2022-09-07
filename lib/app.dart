@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hi_beat/screens/settings/settings_controller.dart';
+import 'package:hi_beat/src/screens.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       builder: (BuildContext context, Widget? child) {
         return  MaterialApp(
           navigatorKey: navigatorKey,
-          home: child,
+          home: const SplashScreen(),
         );
       },
     );
