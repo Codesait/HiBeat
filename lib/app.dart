@@ -16,8 +16,9 @@ class MyApp extends StatelessWidget {
     return AnimatedBuilder(
       animation: settingsController,
       builder: (BuildContext context, Widget? child) {
-        return  MaterialApp(
+        return MaterialApp(
           navigatorKey: navigatorKey,
+          debugShowCheckedModeBanner: false,
           home: const SplashScreen(),
         );
       },
