@@ -1,2 +1,2 @@
 /// Declaring a constant variable.
-const appName = 'Hißeat';
+const appName = 'Hi·ßeat';

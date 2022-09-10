@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hi_beat/screens/splash/viewmodel/splash_screen_viewmodel.dart';
 import 'package:hi_beat/src/res.dart';
 import 'package:hi_beat/src/utils.dart';
 
-class SplashScreen extends StatefulWidget {
+class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  SplashScreenState createState() => SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   void initState() {
-    WidgetsFlutterBinding.ensureInitialized();
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-        overlays: [SystemUiOverlay.bottom]);
     super.initState();
+    ref.read(splashViewModel).onSplashInit();
   }
 
   @override
@@ -28,8 +27,8 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              height: fullHeight(context) * 0.2,
-              width: fullWidth(context) * 0.2,
+              height: fullHeight(context) * 0.3,
+              width: fullWidth(context) * 0.3,
               child: Image.asset(AppAssets.logo),
             ),
             const SizedBox(height: 20),
