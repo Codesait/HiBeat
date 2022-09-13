@@ -3,6 +3,8 @@ import 'package:hi_beat/src/res.dart';
 import 'package:hi_beat/src/screens.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
+import 'cutom_bottomnav_widget.dart';
+
 class HomeWrapper extends StatefulWidget {
   const HomeWrapper({super.key});
 
@@ -37,6 +39,8 @@ class _HomeWrapperState extends State<HomeWrapper> {
           screenTransitionAnimation: const ScreenTransitionAnimation(
             animateTabTransition: true,
           ),
+
+          //
           customWidget: CustomNavBarWidget(
             onItemSelected: (index) {
               setState(() {
