@@ -23,27 +23,25 @@ class _CustomNavBarWidgetState extends State<CustomNavBarWidget> {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: SizedBox(
-        height: fullHeight(context) * 0.2,
-        width: fullWidth(context),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
-      )),
+          height: fullHeight(context) * 0.2,
+          width: fullWidth(context),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: _navigationItems(context),
+          )),
     );
   }
 
   List<Widget> _navigationItems(context) {
     return [
-      _buildNavItem(0, context, isSelected: widget.selectedIndex == 0),
-      _buildNavItem(1, context, isSelected: widget.selectedIndex == 1),
-      _buildNavItem(2, context, isSelected: widget.selectedIndex == 2),
-      _buildNavItem(3, context, isSelected: widget.selectedIndex == 3),
-      _buildNavItem(4, context, isSelected: widget.selectedIndex == 4),
+      _buildNavItem(0, isSelected: widget.selectedIndex == 0),
+      _buildNavItem(1, isSelected: widget.selectedIndex == 1),
+      _buildNavItem(2, isSelected: widget.selectedIndex == 2),
+      _buildNavItem(3, isSelected: widget.selectedIndex == 3),
     ];
   }
 
-  Widget _buildNavItem(int positionIndex, dynamic context,
-      {required bool isSelected}) {
+  Widget _buildNavItem(int positionIndex, {required bool isSelected}) {
     switch (positionIndex) {
       case 0:
         return _navItem(
@@ -56,32 +54,24 @@ class _CustomNavBarWidgetState extends State<CustomNavBarWidget> {
       case 1:
         return _navItem(
           index: positionIndex,
-          activeIcon: AppAssets.homeIconFilled,
-          inactiveIcon: AppAssets.homeIconLine,
+          activeIcon: AppAssets.favIconFllled,
+          inactiveIcon: AppAssets.favIconLine,
           isSelected: isSelected,
         );
 
       case 2:
         return _navItem(
           index: positionIndex,
-          activeIcon: AppAssets.homeIconFilled,
-          inactiveIcon: AppAssets.homeIconLine,
+          activeIcon: AppAssets.libIconFilled,
+          inactiveIcon: AppAssets.libIconLine,
           isSelected: isSelected,
         );
 
       case 3:
         return _navItem(
           index: positionIndex,
-          activeIcon: AppAssets.homeIconFilled,
-          inactiveIcon: AppAssets.homeIconLine,
-          isSelected: isSelected,
-        );
-
-      case 4:
-        return _navItem(
-          index: positionIndex,
-          activeIcon: AppAssets.homeIconFilled,
-          inactiveIcon: AppAssets.homeIconLine,
+          activeIcon: AppAssets.userIconFilled,
+          inactiveIcon: AppAssets.userIconLine,
           isSelected: isSelected,
         );
 
@@ -119,7 +109,7 @@ class _CustomNavBarWidgetState extends State<CustomNavBarWidget> {
           widget.onItemSelected(index);
         },
         child: SizedBox.square(
-          dimension: 23,
+          dimension: 20,
           child: SvgPicture.asset(
             isSelected ? activeIcon : inactiveIcon,
             color: isSelected ? AppColors.primary : AppColors.white,
