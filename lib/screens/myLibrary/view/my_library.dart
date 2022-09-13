@@ -7,6 +7,7 @@ class MyLibraryView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       decoration: const BoxDecoration(
         color: AppColors.black
       ),

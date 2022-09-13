@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hi_beat/src/res.dart';
 import 'package:hi_beat/src/utils.dart';
 
@@ -27,6 +28,16 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
 
       centerTitle: true,
       backgroundColor: AppColors.black,
+
+      actions:  [
+        SizedBox.square(
+          dimension: 20,
+          child: SvgPicture.asset(
+            AppAssets.settingIcon,
+            color: AppColors.white,
+          ),
+        ),
+      ],
     );
   }
 

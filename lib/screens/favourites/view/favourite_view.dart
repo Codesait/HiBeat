@@ -7,8 +7,10 @@ class FavoriteView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       decoration: const BoxDecoration(color: AppColors.black),
-      child: const Text('Favorite',
+      child: const Text(
+        'Favorite',
         style: TextStyle(color: AppColors.white),
       ),
     );

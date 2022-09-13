@@ -10,4 +10,5 @@ class AppAssets {
   static String homeIconFilled = 'home-filled'.svg;
   static String userIconLine = 'user-line'.svg;
   static String userIconFilled = 'user-filled'.svg;
+  static String settingIcon = 'settings'.svg;
 }

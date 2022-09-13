@@ -7,9 +7,10 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       decoration: const BoxDecoration(color: AppColors.black),
       child: const Text(
-        'My lib',
+        'Profile',
         style: TextStyle(color: AppColors.white),
       ),
     );

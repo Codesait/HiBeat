@@ -26,7 +26,7 @@ class _HomeWrapperState extends State<HomeWrapper> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(context: context, title: 'Home'),
+      appBar: CustomAppBar(context: context, title: _getAppBarTitle()),
       body: Stack(
         children: [
           //* custom bottom navigation wrapper
@@ -41,7 +41,7 @@ class _HomeWrapperState extends State<HomeWrapper> {
               animateTabTransition: true,
             ),
 
-            //
+            // cv
             customWidget: CustomNavBarWidget(
               onItemSelected: (index) {
                 setState(() {
@@ -60,5 +60,20 @@ class _HomeWrapperState extends State<HomeWrapper> {
         ],
       ),
     );
+  }
+
+  String _getAppBarTitle() {
+    switch (_controller.index) {
+      case 0:
+        return explore;
+      case 1:
+        return favorite;
+      case 2:
+        return library;
+      case 3:
+        return profile;
+      default:
+        return explore;
+    }
   }
 }
