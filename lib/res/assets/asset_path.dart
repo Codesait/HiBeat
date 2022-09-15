@@ -1,6 +1,7 @@
 import 'package:hi_beat/src/utils.dart';
 
 class AppAssets {
+   
   static String logo = 'logo'.png;
   static String libIconLine = 'headphone-line'.svg;
   static String libIconFilled = 'headphone-filled'.svg;

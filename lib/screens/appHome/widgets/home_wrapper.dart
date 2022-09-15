@@ -3,7 +3,6 @@ import 'package:hi_beat/src/components.dart';
 import 'package:hi_beat/src/res.dart';
 import 'package:hi_beat/src/screens.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
-
 import 'cutom_bottomnav_widget.dart';
 
 class HomeWrapper extends StatefulWidget {
