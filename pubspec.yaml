@@ -27,33 +27,23 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-
   flutter_riverpod: ^1.0.4
-
-
+  flutter_svg: ^1.1.5
   get: ^4.6.5
-
   logger: ^1.1.0
-
-
+  persistent_bottom_nav_bar: ^4.0.2
 
 dev_dependencies:
+
+  flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
 
-  
-  flutter_lints: ^2.0.0
-
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter packages.
 flutter:
 
@@ -66,7 +56,6 @@ flutter:
     - assets/images/
     - assets/svg/
 
-
   fonts:
     - family: Quicksand
       fonts:
@@ -75,4 +64,3 @@ flutter:
         - asset: assets/fonts/Quicksand-Light.ttf
         - asset: assets/fonts/Quicksand-Medium.ttf
         - asset: assets/fonts/Quicksand-SemiBold.ttf
-  
