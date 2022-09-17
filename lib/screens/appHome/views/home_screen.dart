@@ -8,6 +8,7 @@ class HomeSreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SafeArea(
       bottom: false,
+      top: false,
       child: HomeWrapper(),
     );
   }
