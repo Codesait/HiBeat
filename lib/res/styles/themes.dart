@@ -54,7 +54,7 @@ class AppTheme {
     fontFamily: 'Quicksand',
     scaffoldBackgroundColor: AppColors.white,
     primaryColor: AppColors.primary,
-    cardColor: AppColors.grey,
+    cardColor: AppColors.white,
     hintColor: AppColors.grey,
     dividerColor: AppColors.primary,
     disabledColor: AppColors.grey,

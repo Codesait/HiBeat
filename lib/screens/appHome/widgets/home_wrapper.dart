@@ -44,9 +44,10 @@ class _HomeWrapperState extends State<HomeWrapper> {
             screens: _bottomNavScreens,
             itemCount: 4,
             hideNavigationBar: false,
-            backgroundColor: AppColors.black,
+            backgroundColor: Theme.of(context).primaryColor.withOpacity(0.6),
             screenTransitionAnimation: const ScreenTransitionAnimation(
               animateTabTransition: true,
+              curve: Curves.bounceIn,
             ),
 
             // cv
