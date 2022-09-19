@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:hi_beat/src/res.dart';
+import 'package:hi_beat/src/components.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return const ViewsParentContainer(
       alignment: Alignment.center,
-      decoration: const BoxDecoration(color: AppColors.black),
-      child: const Text(
+      child: Text(
         'Profile',
-        style: TextStyle(color: AppColors.white),
       ),
     );
   }

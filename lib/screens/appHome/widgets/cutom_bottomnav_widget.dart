@@ -39,6 +39,7 @@ class _CustomNavBarWidgetState extends State<CustomNavBarWidget> {
       _buildNavItem(1, isSelected: widget.selectedIndex == 1),
       _buildNavItem(2, isSelected: widget.selectedIndex == 2),
       _buildNavItem(3, isSelected: widget.selectedIndex == 3),
+      _buildNavItem(4, isSelected: widget.selectedIndex == 4),
     ];
   }
 
@@ -72,6 +73,15 @@ class _CustomNavBarWidgetState extends State<CustomNavBarWidget> {
         );
 
       case 3:
+        return _navItem(
+          index: positionIndex,
+          activeIcon: AppAssets.collectionIconFilled,
+          inactiveIcon: AppAssets.collectionIconLine,
+          isSelected: isSelected,
+          title: 'Collection',
+        );
+
+      case 4:
         return _navItem(
           index: positionIndex,
           activeIcon: AppAssets.userIconFilled,
@@ -116,7 +126,7 @@ class _CustomNavBarWidgetState extends State<CustomNavBarWidget> {
           widget.onItemSelected(index);
         },
         child: SizedBox.square(
-          dimension: 50,
+          dimension: 20,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -126,13 +136,13 @@ class _CustomNavBarWidgetState extends State<CustomNavBarWidget> {
                   color: isSelected ? AppColors.white : AppColors.white,
                 ),
               ),
-              Expanded(
-                child: Text(
-                  title,
-                  style: const TextStyle()
-                      .copyWith(color: AppColors.white, fontSize: 10),
-                ),
-              ),
+              // Expanded(
+              //   child: Text(
+              //     title,
+              //     style: const TextStyle()
+              //         .copyWith(color: AppColors.white, fontSize: 10),
+              //   ),
+              // ),
             ],
           ),
         ),

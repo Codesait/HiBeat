@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:hi_beat/src/res.dart';
+import 'package:hi_beat/src/components.dart';
 
 class MyLibraryView extends StatelessWidget {
   const MyLibraryView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return const ViewsParentContainer(
       alignment: Alignment.center,
-      decoration: const BoxDecoration(
-        color: AppColors.black
+      child:  Text(
+        'My lib',
+        style: TextStyle(),
       ),
-      child: const Text('My lib',style: TextStyle(color: AppColors.white),),
     );
   }
 }

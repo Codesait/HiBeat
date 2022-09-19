@@ -6,6 +6,7 @@ class AppTheme {
   static ThemeData darkTheme = ThemeData(
     fontFamily: 'Quicksand',
     scaffoldBackgroundColor: AppColors.black,
+    backgroundColor: AppColors.black,
     primaryColor: AppColors.primary,
     cardColor: AppColors.black,
     hintColor: AppColors.grey,
@@ -53,6 +54,7 @@ class AppTheme {
   static ThemeData lightTheme = ThemeData(
     fontFamily: 'Quicksand',
     scaffoldBackgroundColor: AppColors.white,
+    backgroundColor: AppColors.primary,
     primaryColor: AppColors.primary,
     cardColor: AppColors.white,
     hintColor: AppColors.grey,

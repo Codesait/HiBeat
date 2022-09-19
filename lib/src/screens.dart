@@ -21,3 +21,7 @@ export '../screens/myLibrary/view/my_library.dart';
 // profile view
 export '../screens/profile/view/profile.dart';
 
+
+// genre view
+export '../screens/genre/view/genre.dart';
+

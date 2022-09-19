@@ -4,3 +4,4 @@ const explore = 'Explore';
 const favorite = 'Favorite';
 const library = 'Library';
 const profile = 'Profile';
+const genre = 'Genre';
