@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:hi_beat/src/components.dart';
 import 'package:hi_beat/src/res.dart';
 import 'package:hi_beat/src/screens.dart';
+import 'package:hi_beat/src/utils.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'cutom_bottomnav_widget.dart';
 
@@ -21,6 +24,12 @@ class _HomeWrapperState extends State<HomeWrapper> {
     const MyLibraryView(),
     const ProfileView()
   ];
+
+  @override
+  void initState() {
+    Functions.revealToolBar();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
