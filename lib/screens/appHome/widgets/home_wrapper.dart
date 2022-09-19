@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:hi_beat/src/components.dart';
 import 'package:hi_beat/src/res.dart';
@@ -18,10 +16,12 @@ class HomeWrapper extends StatefulWidget {
 class _HomeWrapperState extends State<HomeWrapper> {
   final _controller = PersistentTabController();
 
+  // views
   final List<Widget> _bottomNavScreens = [
     const ExploreView(),
     const FavoriteView(),
     const MyLibraryView(),
+    const GenreView(),
     const ProfileView()
   ];
 
@@ -42,11 +42,12 @@ class _HomeWrapperState extends State<HomeWrapper> {
             context,
             controller: _controller,
             screens: _bottomNavScreens,
-            itemCount: 4,
+            itemCount: 5,
             hideNavigationBar: false,
-            backgroundColor: AppColors.black,
+            backgroundColor: Theme.of(context).backgroundColor,
             screenTransitionAnimation: const ScreenTransitionAnimation(
               animateTabTransition: true,
+              curve: Curves.bounceIn,
             ),
 
             // cv
@@ -78,8 +79,13 @@ class _HomeWrapperState extends State<HomeWrapper> {
         return favorite;
       case 2:
         return library;
+
       case 3:
+        return genre;
+
+      case 4:
         return profile;
+
       default:
         return explore;
     }

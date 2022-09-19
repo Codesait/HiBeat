@@ -22,8 +22,9 @@ class _CustomNavBarWidgetState extends State<CustomNavBarWidget> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: _onWillPop,
-      child: SizedBox(
-          height: fullHeight(context) * 0.2,
+      child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          height: fullHeight(context) * 0.8,
           width: fullWidth(context),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -38,6 +39,7 @@ class _CustomNavBarWidgetState extends State<CustomNavBarWidget> {
       _buildNavItem(1, isSelected: widget.selectedIndex == 1),
       _buildNavItem(2, isSelected: widget.selectedIndex == 2),
       _buildNavItem(3, isSelected: widget.selectedIndex == 3),
+      _buildNavItem(4, isSelected: widget.selectedIndex == 4),
     ];
   }
 
@@ -49,6 +51,7 @@ class _CustomNavBarWidgetState extends State<CustomNavBarWidget> {
           activeIcon: AppAssets.homeIconFilled,
           inactiveIcon: AppAssets.homeIconLine,
           isSelected: isSelected,
+          title: 'Home',
         );
 
       case 1:
@@ -57,6 +60,7 @@ class _CustomNavBarWidgetState extends State<CustomNavBarWidget> {
           activeIcon: AppAssets.favIconFllled,
           inactiveIcon: AppAssets.favIconLine,
           isSelected: isSelected,
+          title: 'Favourites',
         );
 
       case 2:
@@ -65,14 +69,25 @@ class _CustomNavBarWidgetState extends State<CustomNavBarWidget> {
           activeIcon: AppAssets.libIconFilled,
           inactiveIcon: AppAssets.libIconLine,
           isSelected: isSelected,
+          title: 'Library',
         );
 
       case 3:
         return _navItem(
           index: positionIndex,
+          activeIcon: AppAssets.collectionIconFilled,
+          inactiveIcon: AppAssets.collectionIconLine,
+          isSelected: isSelected,
+          title: 'Collection',
+        );
+
+      case 4:
+        return _navItem(
+          index: positionIndex,
           activeIcon: AppAssets.userIconFilled,
           inactiveIcon: AppAssets.userIconLine,
           isSelected: isSelected,
+          title: 'Profile',
         );
 
       default:
@@ -81,6 +96,7 @@ class _CustomNavBarWidgetState extends State<CustomNavBarWidget> {
           activeIcon: AppAssets.homeIconFilled,
           inactiveIcon: AppAssets.homeIconLine,
           isSelected: isSelected,
+          title: 'Home',
         );
     }
   }
@@ -102,6 +118,7 @@ class _CustomNavBarWidgetState extends State<CustomNavBarWidget> {
     required String activeIcon,
     required String inactiveIcon,
     required bool isSelected,
+    required String title,
   }) {
     return Expanded(
       child: GestureDetector(
@@ -110,9 +127,23 @@ class _CustomNavBarWidgetState extends State<CustomNavBarWidget> {
         },
         child: SizedBox.square(
           dimension: 20,
-          child: SvgPicture.asset(
-            isSelected ? activeIcon : inactiveIcon,
-            color: isSelected ? AppColors.primary : AppColors.white,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: SvgPicture.asset(
+                  isSelected ? activeIcon : inactiveIcon,
+                  color: isSelected ? AppColors.white : AppColors.white,
+                ),
+              ),
+              // Expanded(
+              //   child: Text(
+              //     title,
+              //     style: const TextStyle()
+              //         .copyWith(color: AppColors.white, fontSize: 10),
+              //   ),
+              // ),
+            ],
           ),
         ),
       ),
