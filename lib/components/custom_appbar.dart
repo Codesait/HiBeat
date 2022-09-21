@@ -24,7 +24,10 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       ),
 
       // title will be updated according to the page the appbar is rendered
-      title: Text(title),
+      title: Text(
+        title,
+        style: Theme.of(context).textTheme.headline5,
+      ),
 
       centerTitle: true,
 
