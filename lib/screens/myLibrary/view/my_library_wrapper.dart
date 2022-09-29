@@ -1,42 +1,59 @@
 import 'package:flutter/material.dart';
-import 'package:hi_beat/src/components.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hi_beat/screens/myLibrary/viewmodel/library_viewmodel.dart';
 import 'package:hi_beat/src/screens.dart';
 
-class MyLibraryView extends StatefulWidget {
+class MyLibraryView extends ConsumerStatefulWidget {
   const MyLibraryView({super.key});
 
   @override
-  State<MyLibraryView> createState() => _MyLibraryViewState();
+  MyLibraryViewState createState() => MyLibraryViewState();
 }
 
-class _MyLibraryViewState extends State<MyLibraryView> with SingleTickerProviderStateMixin {
-
-  late TabController  tabController;
-
+class MyLibraryViewState extends ConsumerState<MyLibraryView>
+    with SingleTickerProviderStateMixin {
+  late TabController tabController;
 
   @override
   void initState() {
+    // // viewmodel provider
+    // final prd = ref.watch(myLibraryViewmodel);
+
+    //initializing tab controller with tab length
     tabController = TabController(length: 4, vsync: this);
     super.initState();
   }
 
   @override
+  void dispose() {
+    tabController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return  ViewsParentContainer(
-      alignment: Alignment.center,
-      child:  DefaultTabController(
-        length: 4,
-        child: Column(
-          children: [
-            MyLibraryTab(
+    final provider = ref.watch(myLibraryViewmodel);
+    return DefaultTabController(
+      length: provider.tabs.length,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Flexible(
+            child: MyLibraryTab(
               tabController: tabController,
+              tabs: provider.tabs,
             ),
-            const Text(
-              'My lib',
-              style: TextStyle(),
-            ),
-          ],
-        ),
+          ),
+          const Expanded(
+            flex: 2,
+            child: TabBarView(children: [
+              MySongs(),
+              MySongs(),
+              MySongs(),
+              MySongs(),
+            ]),
+          )
+        ],
       ),
     );
   }

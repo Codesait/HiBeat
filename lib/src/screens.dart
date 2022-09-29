@@ -17,6 +17,11 @@ export '../screens/favourites/view/favourite_view.dart';
 // lib view
 export '../screens/myLibrary/view/my_library_wrapper.dart';
 export '../screens/myLibrary/widgets/library_tab.dart';
+export '../screens/myLibrary/widgets/my_songs.dart';
+export '../screens/myLibrary/widgets/my_albums.dart';
+export '../screens/myLibrary/widgets/my_artist.dart';
+export '../screens/myLibrary/widgets/my_playlist.dart';
+
 
 
 // profile view

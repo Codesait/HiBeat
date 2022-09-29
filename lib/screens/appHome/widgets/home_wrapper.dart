@@ -54,34 +54,38 @@ class _HomeWrapperState extends State<HomeWrapper>
     return Scaffold(
       body: Stack(
         children: <Widget>[
-
           //* custom bottom navigation wrapper
-          PersistentTabView.custom(
-            context,
-            controller: navController,
-            screens: _bottomNavScreens,
-            itemCount: 5,
-            hideNavigationBar: false,
-            backgroundColor: Theme.of(context).backgroundColor,
-            screenTransitionAnimation: const ScreenTransitionAnimation(
-              animateTabTransition: true,
-              curve: Curves.bounceIn,
+          Positioned(
+            top: 20,
+            left: 0,
+            right: 0,
+            height: fullHeight(context),
+            child: PersistentTabView.custom(
+              context,
+              controller: navController,
+              screens: _bottomNavScreens,
+              itemCount: 5,
+              hideNavigationBar: false,
+              backgroundColor: Theme.of(context).backgroundColor,
+              screenTransitionAnimation: const ScreenTransitionAnimation(
+                animateTabTransition: true,
+                curve: Curves.bounceIn,
+              ),
+              margin: const EdgeInsets.only(top: 100),
+              //* custom navigation widget
+              customWidget: hideNav
+                  ? const SizedBox()
+                  : CustomNavBarWidget(
+                      onItemSelected: (index) {
+                        setState(() {
+                          navController.index = index;
+                        });
+                      },
+                      selectedIndex: navController.index,
+                    ),
             ),
-
-            //* custom navigation widget
-            customWidget: hideNav
-                ? const SizedBox()
-                : CustomNavBarWidget(
-                    onItemSelected: (index) {
-                      setState(() {
-                        navController.index = index;
-                      });
-                    },
-                    selectedIndex: navController.index,
-                  ),
           ),
 
-          
           Positioned(
             top: 0,
             left: 0,

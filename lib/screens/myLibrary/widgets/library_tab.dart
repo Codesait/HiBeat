@@ -1,26 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:hi_beat/res/constants/app_strings.dart';
+import 'package:hi_beat/src/utils.dart';
 
 class MyLibraryTab extends StatelessWidget {
-  const MyLibraryTab({
-    super.key,
-    required this.tabController,
-  });
+  const MyLibraryTab(
+      {super.key, required this.tabController, required this.tabs});
   final TabController tabController;
+  final List<String> tabs;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    /// Creating a list of tab strings.
-    final tabs = <String>[
-      playlists,
-      songs,
-      albums,
-      artists,
-    ];
-
-    return  TabBar(
+    return Container(
+      height: 60,
+      color: Colors.red,
+      alignment: Alignment.center,
+      width: fullWidth(context),
+      child: TabBar(
         controller: tabController,
         unselectedLabelColor: theme.cardColor.withOpacity(0.5),
         indicatorSize: TabBarIndicatorSize.label,
@@ -43,7 +39,7 @@ class MyLibraryTab extends StatelessWidget {
               ),
             )
             .toList(),
-      
+      ),
     );
   }
 }
