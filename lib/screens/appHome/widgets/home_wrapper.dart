@@ -1,8 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hi_beat/src/components.dart';
 import 'package:hi_beat/src/res.dart';
 import 'package:hi_beat/src/screens.dart';
 import 'package:hi_beat/src/utils.dart';
+import 'package:mini_player/controller.dart';
+import 'package:mini_player/expandable_player.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'cutom_bottomnav_widget.dart';
 
@@ -13,8 +16,11 @@ class HomeWrapper extends StatefulWidget {
   State<HomeWrapper> createState() => _HomeWrapperState();
 }
 
-class _HomeWrapperState extends State<HomeWrapper> {
-  final _controller = PersistentTabController();
+class _HomeWrapperState extends State<HomeWrapper>
+    with SingleTickerProviderStateMixin {
+  final navController = PersistentTabController();
+
+  late AnimationController controller;
 
   // views
   final List<Widget> _bottomNavScreens = [
@@ -28,19 +34,31 @@ class _HomeWrapperState extends State<HomeWrapper> {
   @override
   void initState() {
     Functions.revealToolBar();
+    controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1500),
+    );
     super.initState();
   }
 
   @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  final hideNav = false;
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(context: context, title: _getAppBarTitle()),
       body: Stack(
-        children: [
+        children: <Widget>[
+
           //* custom bottom navigation wrapper
           PersistentTabView.custom(
             context,
-            controller: _controller,
+            controller: navController,
             screens: _bottomNavScreens,
             itemCount: 5,
             hideNavigationBar: false,
@@ -50,29 +68,44 @@ class _HomeWrapperState extends State<HomeWrapper> {
               curve: Curves.bounceIn,
             ),
 
-            // cv
-            customWidget: CustomNavBarWidget(
-              onItemSelected: (index) {
-                setState(() {
-                  _controller.index = index;
-                });
-              },
-              selectedIndex: _controller.index,
+            //* custom navigation widget
+            customWidget: hideNav
+                ? const SizedBox()
+                : CustomNavBarWidget(
+                    onItemSelected: (index) {
+                      setState(() {
+                        navController.index = index;
+                      });
+                    },
+                    selectedIndex: navController.index,
+                  ),
+          ),
+
+          
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: CustomAppBar(
+              context: context,
+              title: _getAppBarTitle(),
             ),
           ),
 
           //* mini player
-          // Positioned(
-          //   bottom: Platform.isAndroid ? 56 : 88,
-          //   child: const MiniControlCenter(),
-          // )
+          ExpandablePlayer(
+            context: context,
+            animationController: controller,
+            enableBottomPadding: true,
+            isExpanded: (value) {},
+          )
         ],
       ),
     );
   }
 
   String _getAppBarTitle() {
-    switch (_controller.index) {
+    switch (navController.index) {
       case 0:
         return explore;
       case 1:

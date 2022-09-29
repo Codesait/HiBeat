@@ -15,7 +15,8 @@ export '../screens/favourites/view/favourite_view.dart';
 
 
 // lib view
-export '../screens/myLibrary/view/my_library.dart';
+export '../screens/myLibrary/view/my_library_wrapper.dart';
+export '../screens/myLibrary/widgets/library_tab.dart';
 
 
 // profile view
@@ -24,4 +25,5 @@ export '../screens/profile/view/profile.dart';
 
 // genre view
 export '../screens/genre/view/genre.dart';
+
 

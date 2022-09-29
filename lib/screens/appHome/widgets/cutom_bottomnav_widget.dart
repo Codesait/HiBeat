@@ -24,7 +24,7 @@ class _CustomNavBarWidgetState extends State<CustomNavBarWidget> {
       onWillPop: _onWillPop,
       child: Container(
           padding: const EdgeInsets.symmetric(vertical: 10),
-          height: fullHeight(context) * 0.8,
+          height: fullHeight(context) * 0.6,
           width: fullWidth(context),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

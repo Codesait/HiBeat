@@ -4,25 +4,34 @@ import 'package:flutter/material.dart';
 
 import 'controller.dart';
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
-
-class ExpandablePlayer extends StatelessWidget {
-  const ExpandablePlayer({
+// ignore: must_be_immutable
+class ExpandablePlayer extends StatefulWidget {
+  ExpandablePlayer({
     super.key,
     required this.context,
     required this.animationController,
+    this.enableBottomPadding = false,
+    this.isExpanded,
   });
 
   //* Build context
   final BuildContext context;
 
   //* animation controller
-  final AnimationController animationController;
+  AnimationController animationController;
 
+  //* enable bottom padding
+  final bool enableBottomPadding;
+
+  final ValueChanged<AnimationController>? isExpanded;
+
+  @override
+  State<ExpandablePlayer> createState() => _ExpandablePlayerState();
+}
+
+class _ExpandablePlayerState extends State<ExpandablePlayer> {
+  //
+  //
   Future<bool> lo() async {
     return true;
   }
@@ -32,16 +41,45 @@ class ExpandablePlayer extends StatelessWidget {
     //* this is the package controller provider
     final controller = ExpandablePlayerController(
       context,
-      animationController,
+      widget.animationController,
     );
 
     return WillPopScope(
         child: AnimatedBuilder(
-            animation: controller,
-            builder: (context, child) {
-              //
-              return const Positioned(
-                child: Scaffold(),
+            animation: widget.animationController,
+            builder: (context, _) {
+              //*
+              return Positioned(
+                height: controller.lerp(
+                  controller.minHeight,
+                  controller.maxHeight,
+                ),
+                left: 0,
+                right: 0,
+                bottom: (controller.isMiniPlayer && widget.enableBottomPadding)
+                    ? 90
+                    : 0,
+                child: GestureDetector(
+                  onVerticalDragUpdate: controller
+                      .handleDragUpdate, //<-- Add verticalDragUpdate callback
+                  onVerticalDragEnd: controller.handleDragEnd,
+                  onTap: controller.isMiniPlayer ? controller.toggle : null,
+
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 300),
+                    decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius:
+                            BorderRadius.circular(controller.miniPlayerRadius)),
+                    margin: EdgeInsets.symmetric(
+                      horizontal: controller.widgetHorizontalMargin,
+                      vertical: controller.widgetVerticalMargin,
+                    ),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: controller.isMiniPlayer ? 5 : 0,
+                    ),
+                  ),
+                ),
               );
             }),
         onWillPop: () {
