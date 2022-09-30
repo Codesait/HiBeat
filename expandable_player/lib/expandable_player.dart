@@ -57,7 +57,7 @@ class _ExpandablePlayerState extends State<ExpandablePlayer> {
                 left: 0,
                 right: 0,
                 bottom: (controller.isMiniPlayer && widget.enableBottomPadding)
-                    ? 90
+                    ? 70
                     : 0,
                 child: GestureDetector(
                   onVerticalDragUpdate: controller

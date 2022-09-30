@@ -84,7 +84,8 @@ class AppTheme {
         fontSize: 12,
         color: AppColors.white,
       ),
-      subtitle1: TextStyle(color: AppColors.grey, fontWeight: FontWeight.w600),
+      subtitle1: TextStyle(
+          color: AppColors.white, fontWeight: FontWeight.w600, fontSize: 15),
       headline5: TextStyle(color: AppColors.grey, fontWeight: FontWeight.bold),
       headline6: TextStyle(color: AppColors.black),
       bodyText1: TextStyle(color: AppColors.black),

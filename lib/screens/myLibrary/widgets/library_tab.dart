@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hi_beat/src/utils.dart';
 
 class MyLibraryTab extends StatelessWidget {
   const MyLibraryTab(
@@ -13,13 +12,18 @@ class MyLibraryTab extends StatelessWidget {
 
     return Container(
       height: 60,
-      color: Colors.red,
+      color: theme.primaryColor.withOpacity(0.2),
       alignment: Alignment.center,
-      width: fullWidth(context),
+      padding: const EdgeInsets.symmetric(horizontal: 5),
       child: TabBar(
+        isScrollable: false,
+        padding: EdgeInsets.zero,
+        indicatorPadding: EdgeInsets.zero,
         controller: tabController,
-        unselectedLabelColor: theme.cardColor.withOpacity(0.5),
-        indicatorSize: TabBarIndicatorSize.label,
+        labelColor: theme.textTheme.subtitle1!.color,
+        unselectedLabelColor: theme.textTheme.subtitle1!.color,
+        labelStyle: theme.textTheme.subtitle1,
+        indicatorSize: TabBarIndicatorSize.tab,
         indicator: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
           color: theme.primaryColor,
@@ -27,15 +31,7 @@ class MyLibraryTab extends StatelessWidget {
         tabs: tabs
             .map(
               (tab) => Tab(
-                child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      border: Border.all(color: theme.primaryColor, width: 1)),
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Text(tab),
-                  ),
-                ),
+                text: tab,
               ),
             )
             .toList(),

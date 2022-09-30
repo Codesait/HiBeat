@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hi_beat/screens/myLibrary/viewmodel/library_viewmodel.dart';
+import 'package:hi_beat/src/components.dart';
 import 'package:hi_beat/src/screens.dart';
+import 'package:hi_beat/src/utils.dart';
 
 class MyLibraryView extends ConsumerStatefulWidget {
   const MyLibraryView({super.key});
@@ -35,25 +37,29 @@ class MyLibraryViewState extends ConsumerState<MyLibraryView>
     final provider = ref.watch(myLibraryViewmodel);
     return DefaultTabController(
       length: provider.tabs.length,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Flexible(
-            child: MyLibraryTab(
+      child: ViewsParentContainer(
+        child: ListView(
+          padding: const EdgeInsets.only(top: 100),
+          physics: const NeverScrollableScrollPhysics(),
+          children: [
+            MyLibraryTab(
               tabController: tabController,
               tabs: provider.tabs,
             ),
-          ),
-          const Expanded(
-            flex: 2,
-            child: TabBarView(children: [
-              MySongs(),
-              MySongs(),
-              MySongs(),
-              MySongs(),
-            ]),
-          )
-        ],
+            SizedBox(
+              height: getContainerHeight(context),
+              child: TabBarView(
+                  physics: const NeverScrollableScrollPhysics(),
+                  controller: tabController,
+                  children: const [
+                    MySongs(),
+                    MySongs(),
+                    MySongs(),
+                    MySongs(),
+                  ]),
+            ),
+          ],
+        ),
       ),
     );
   }

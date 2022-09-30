@@ -56,7 +56,7 @@ class _HomeWrapperState extends State<HomeWrapper>
         children: <Widget>[
           //* custom bottom navigation wrapper
           Positioned(
-            top: 20,
+            top: 18,
             left: 0,
             right: 0,
             height: fullHeight(context),
