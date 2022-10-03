@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:hi_beat/src/components.dart';
-import 'package:hi_beat/src/utils.dart';
 
-class MySongs extends StatelessWidget {
-  const MySongs({super.key});
+class MyPlayLists extends StatelessWidget {
+  const MyPlayLists({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ViewsParentContainer(
+    return const ViewsParentContainer(
       alignment: Alignment.center,
       child: Text(
-        'My lib',
+        'My playlists',
         style: TextStyle(),
       ),
     );

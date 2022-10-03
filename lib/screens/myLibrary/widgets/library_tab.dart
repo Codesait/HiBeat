@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:hi_beat/src/utils.dart';
 
 class MyLibraryTab extends StatelessWidget {
   const MyLibraryTab(
@@ -12,11 +15,10 @@ class MyLibraryTab extends StatelessWidget {
 
     return Container(
       height: 60,
-      color: theme.primaryColor.withOpacity(0.2),
       alignment: Alignment.center,
       padding: const EdgeInsets.symmetric(horizontal: 5),
       child: TabBar(
-        isScrollable: false,
+        isScrollable: true,
         padding: EdgeInsets.zero,
         indicatorPadding: EdgeInsets.zero,
         controller: tabController,
@@ -30,8 +32,16 @@ class MyLibraryTab extends StatelessWidget {
         ),
         tabs: tabs
             .map(
-              (tab) => Tab(
-                text: tab,
+              (tab) => Container(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                width: fullWidth(context) / 4.5,
+                decoration: BoxDecoration(
+                  color: theme.primaryColor.withOpacity(0.5),
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child: Tab(
+                  text: tab,
+                ),
               ),
             )
             .toList(),

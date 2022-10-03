@@ -18,9 +18,6 @@ class MyLibraryViewState extends ConsumerState<MyLibraryView>
 
   @override
   void initState() {
-    // // viewmodel provider
-    // final prd = ref.watch(myLibraryViewmodel);
-
     //initializing tab controller with tab length
     tabController = TabController(length: 4, vsync: this);
     super.initState();
@@ -38,27 +35,29 @@ class MyLibraryViewState extends ConsumerState<MyLibraryView>
     return DefaultTabController(
       length: provider.tabs.length,
       child: ViewsParentContainer(
-        child: ListView(
-          padding: const EdgeInsets.only(top: 100),
+        padding: const EdgeInsets.only(top: 100),
+        child: SingleChildScrollView(
           physics: const NeverScrollableScrollPhysics(),
-          children: [
-            MyLibraryTab(
-              tabController: tabController,
-              tabs: provider.tabs,
-            ),
-            SizedBox(
-              height: getContainerHeight(context),
-              child: TabBarView(
-                  physics: const NeverScrollableScrollPhysics(),
-                  controller: tabController,
-                  children: const [
-                    MySongs(),
-                    MySongs(),
-                    MySongs(),
-                    MySongs(),
-                  ]),
-            ),
-          ],
+          child: Column(
+            children: [
+              MyLibraryTab(
+                tabController: tabController,
+                tabs: provider.tabs,
+              ),
+              SizedBox(
+                height: getContainerHeight(context),
+                child: TabBarView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    controller: tabController,
+                    children: const [
+                      MyPlayLists(),
+                      MySongs(),
+                      MyPlayLists(),
+                      MyPlayLists(),
+                    ]),
+              ),
+            ],
+          ),
         ),
       ),
     );
