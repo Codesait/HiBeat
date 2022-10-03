@@ -14,7 +14,7 @@ export '../screens/explore/view/explore.dart';
 export '../screens/favourites/view/favourite_view.dart';
 
 
-// lib view
+// lib views
 export '../screens/myLibrary/view/my_library_wrapper.dart';
 export '../screens/myLibrary/widgets/library_tab.dart';
 export '../screens/myLibrary/widgets/my_songs.dart';

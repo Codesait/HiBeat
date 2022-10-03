@@ -12,12 +12,14 @@ class SongArt extends StatelessWidget {
     this.networkImage = '',
     this.height,
     this.width,
+    this.radius = 20,
   }) : super(key: key);
 
   final Uri? uri;
   final String networkImage;
   final double? height;
   final double? width;
+  final double radius;
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +28,9 @@ class SongArt extends StatelessWidget {
       height: height ?? fullHeight(context) / 2,
       child: Card(
         elevation: 4,
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(radius),
+        ),
         clipBehavior: Clip.antiAlias,
         child: (uri != null)
             ? Image.file(

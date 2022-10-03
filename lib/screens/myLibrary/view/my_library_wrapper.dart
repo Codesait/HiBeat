@@ -52,7 +52,7 @@ class MyLibraryViewState extends ConsumerState<MyLibraryView>
                     children: const [
                       MyPlayLists(),
                       MySongs(),
-                      MyPlayLists(),
+                      MyAlbums(),
                       MyPlayLists(),
                     ]),
               ),

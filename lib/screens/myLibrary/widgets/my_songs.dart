@@ -11,6 +11,7 @@ class MySongs extends StatelessWidget {
       child: ListView.builder(
         itemCount: 7,
         shrinkWrap: true,
+        padding: EdgeInsets.zero,
         itemBuilder: (context, index) {
           return const MusicTileStyleOne();
         },

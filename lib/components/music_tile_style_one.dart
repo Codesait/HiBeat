@@ -10,34 +10,36 @@ class MusicTileStyleOne extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: fullHeight(context) * 0.1,
-      width: fullWidth(context),
-      padding: const EdgeInsets.only(left: 15),
-      margin: const EdgeInsets.only(bottom: 15),
-      color: Colors.red,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          SongArt(
-            networkImage: im,
-            height: 80,
-            width: 80,
-          ),
-          const Gap(dimension: 30),
-          const Expanded(
-            flex: 2,
-            child: MusicTileDescription(
-              songName: 'All of Me',
-              artist: 'John Legend',
+    return InkWell(
+      onTap: (){},
+      child: Container(
+        height: fullHeight(context) * 0.1,
+        width: fullWidth(context),
+        padding: const EdgeInsets.only(left: 15),
+        margin: const EdgeInsets.only(bottom: 15),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            SongArt(
+              networkImage: im,
+              height: 80,
+              width: 80,
             ),
-          ),
-          const Expanded(
-            child: Icon(
-              Icons.more_horiz_outlined,
+            const Gap(dimension: 15),
+            const Expanded(
+              flex: 2,
+              child: MusicTileDescription(
+                songName: 'All of Me',
+                artist: 'John Legend',
+              ),
             ),
-          )
-        ],
+            const Expanded(
+              child: Icon(
+                Icons.more_horiz_outlined,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
