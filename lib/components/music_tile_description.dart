@@ -4,7 +4,7 @@ class MusicTileDescription extends StatelessWidget {
   const MusicTileDescription(
       {super.key,
       this.songName,
-      this.artist,
+      this.artist = '',
       this.mainAxisAlignment = MainAxisAlignment.center,
       this.padding = EdgeInsets.zero});
   final String? songName;

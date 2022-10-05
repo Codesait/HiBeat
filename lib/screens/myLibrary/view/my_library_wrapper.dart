@@ -53,7 +53,7 @@ class MyLibraryViewState extends ConsumerState<MyLibraryView>
                       MyPlayLists(),
                       MySongs(),
                       MyAlbums(),
-                      MyPlayLists(),
+                      MyArtists(),
                     ]),
               ),
             ],
