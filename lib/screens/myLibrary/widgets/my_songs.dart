@@ -12,6 +12,7 @@ class MySongs extends StatelessWidget {
         itemCount: 7,
         shrinkWrap: true,
         padding: EdgeInsets.zero,
+        physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) {
           return const MusicTileStyleOne();
         },
