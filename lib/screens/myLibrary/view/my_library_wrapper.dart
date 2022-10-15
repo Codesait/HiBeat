@@ -35,7 +35,7 @@ class MyLibraryViewState extends ConsumerState<MyLibraryView>
     return DefaultTabController(
       length: provider.tabs.length,
       child: ViewsParentContainer(
-        padding: const EdgeInsets.only(top: 100),
+        padding: const EdgeInsets.only(top: 50),
         child: SingleChildScrollView(
           physics: const NeverScrollableScrollPhysics(),
           child: Column(

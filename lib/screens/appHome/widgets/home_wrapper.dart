@@ -71,7 +71,7 @@ class _HomeWrapperState extends State<HomeWrapper>
                 animateTabTransition: true,
                 curve: Curves.bounceIn,
               ),
-              margin: const EdgeInsets.only(top: 100),
+              //margin: const EdgeInsets.only(top: 100),
               //* custom navigation widget
               customWidget: hideNav
                   ? const SizedBox()

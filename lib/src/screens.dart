@@ -9,6 +9,7 @@ export '../screens/appHome/views/home_screen.dart';
 
 // explore view
 export '../screens/explore/view/explore.dart';
+export '../screens/explore/widgets/home_widgets.dart';
 
 // favourite view
 export '../screens/favourites/view/favourite_view.dart';
