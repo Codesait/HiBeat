@@ -10,13 +10,15 @@ class ExploreView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewsParentContainer(
       alignment: Alignment.center,
-      padding: const EdgeInsets.only(top: 50),
+      padding: const EdgeInsets.only(top: 40, bottom: 40),
       height: getContainerHeight(context),
       width: fullWidth(context),
-      //  padding: const EdgeInsets.only(top: 100),
-      child: Column(
+      child: ListView(
         children: const [
           SuggestedArtists(),
+          MadeForYou(),
+          NewReleases(),
+          FeaturedPlaylists()
         ],
       ),
     );
