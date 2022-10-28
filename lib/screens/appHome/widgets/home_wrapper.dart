@@ -1,10 +1,8 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hi_beat/src/components.dart';
 import 'package:hi_beat/src/res.dart';
 import 'package:hi_beat/src/screens.dart';
 import 'package:hi_beat/src/utils.dart';
-import 'package:mini_player/controller.dart';
 import 'package:mini_player/expandable_player.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'cutom_bottomnav_widget.dart';

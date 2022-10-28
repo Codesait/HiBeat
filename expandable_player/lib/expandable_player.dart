@@ -1,6 +1,7 @@
 library mini_player;
 
 import 'package:flutter/material.dart';
+import 'package:mini_player/utils.dart';
 
 import 'controller.dart';
 
@@ -50,10 +51,8 @@ class _ExpandablePlayerState extends State<ExpandablePlayer> {
             builder: (context, _) {
               //*
               return Positioned(
-                height: controller.lerp(
-                  controller.minHeight,
-                  controller.maxHeight,
-                ),
+                height:
+                    controller.lerp(controller.minHeight, controller.maxHeight),
                 left: 0,
                 right: 0,
                 bottom: (controller.isMiniPlayer && widget.enableBottomPadding)
@@ -77,6 +76,17 @@ class _ExpandablePlayerState extends State<ExpandablePlayer> {
                     ),
                     padding: EdgeInsets.symmetric(
                       horizontal: controller.isMiniPlayer ? 5 : 0,
+                    ),
+                    child: Stack(
+                      children: [
+                        PlayerAppBar(controller: widget.animationController),
+                        PlayerSongArtPosition(
+                          controller: controller,
+                          positionIndex: 2,
+                          songArtWidget: const Placeholder(),
+                        ),
+                        
+                      ],
                     ),
                   ),
                 ),

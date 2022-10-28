@@ -9,12 +9,12 @@ class ExpandablePlayerController extends ChangeNotifier {
   ExpandablePlayerController(this.context, this.controller);
 
   // this section is for expandable player widget
-  final double _minHeight = 60;
-  final double _artStartSize = 60;
+  final double _minHeight = 68;
+  final double _artStartSize = 50;
   final double _titleEndSize = 55;
   final double _titleEndMarginTop = 80;
   final double _titleStartMarginTop = 10;
-  final double _artStartMarginTop = 8;
+  final double _artStartMarginTop = 7;
   final double _artEndMarginTop = 40;
   final double _artVerticalSpacing = 35;
   final double _artHorizontalSpacing = 25;
@@ -26,6 +26,18 @@ class ExpandablePlayerController extends ChangeNotifier {
   bool get isMiniPlayer {
     return controller.status == AnimationStatus.dismissed;
   }
+
+  // default style variables
+  double? get defaultSongArtSize => lerp(_artStartSize, fullWidth(context));
+
+  double defaultArtTopMargin(int index) => lerp(_artStartMarginTop, 0)!;
+
+  double defaultTitleTopMargin(int index) =>
+      lerp(_titleStartMarginTop,
+          _titleEndMarginTop + index * (8 + _titleEndSize))! -
+      10;
+
+  //ANOTHER STYLE
 
   double get minHeight => _minHeight;
 
@@ -47,8 +59,7 @@ class ExpandablePlayerController extends ChangeNotifier {
 
   double artTopMargin(int index) => lerp(
         _artStartMarginTop,
-        _artEndMarginTop +
-            index * (_artVerticalSpacing + fullHeight(context) / 2.8),
+        _artEndMarginTop + index * (_artVerticalSpacing),
       )!;
 
   double titleTopMargin(int index) =>
