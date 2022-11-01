@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 export 'package:mini_player/player_position_widgets/default /player_appbar.dart';
 export 'package:mini_player/controller.dart';
 export 'package:mini_player/player_position_widgets/default /player_art_position.dart';
-
+export 'package:mini_player/player_position_widgets/default /mini_player_title.dart';
+export 'package:mini_player/player_position_widgets/default /audio_controllers.dart';
 
 ///* [fullWidth] is used this for getting device full width
 double fullWidth(BuildContext context) {
@@ -14,6 +15,3 @@ double fullWidth(BuildContext context) {
 double fullHeight(BuildContext context) {
   return MediaQuery.of(context).size.height;
 }
-
-
-

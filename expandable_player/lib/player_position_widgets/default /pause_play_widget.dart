@@ -21,29 +21,28 @@ class PausePlayController extends StatelessWidget {
     return SizedBox(
       height: height,
       width: height,
-      child: playPauseButton(playing),
+      child: FittedBox(child: playPauseButton(playing)),
     );
   }
 
-
-  //* if media state is playing, thius widgets icon and functon state 
+  //* if media state is playing, this widgets icon and functon state
   //* changes as well
   FloatingActionButton playPauseButton(bool isplaying) => FloatingActionButton(
         elevation: 10,
         tooltip: 'Play',
-        onPressed: isplaying
-            ? onPause
-            : onPlay,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+        onPressed: isplaying ? onPause : onPlay,
+        backgroundColor: Colors.white,
         child: isplaying
             ? const Icon(
                 Icons.pause_rounded,
-                color: Colors.white,
+                color: Colors.green,
                 size: 35.0,
               )
             : const Icon(
                 Icons.play_arrow_rounded,
                 size: 35.0,
-                color: Colors.white,
+                color: Colors.green,
               ),
       );
 }

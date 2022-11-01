@@ -51,8 +51,10 @@ class _ExpandablePlayerState extends State<ExpandablePlayer> {
             builder: (context, _) {
               //*
               return Positioned(
-                height:
-                    controller.lerp(controller.minHeight, controller.maxHeight),
+                height: controller.lerp(
+                  controller.minHeight,
+                  controller.maxHeight,
+                ),
                 left: 0,
                 right: 0,
                 bottom: (controller.isMiniPlayer && widget.enableBottomPadding)
@@ -85,7 +87,10 @@ class _ExpandablePlayerState extends State<ExpandablePlayer> {
                           positionIndex: 2,
                           songArtWidget: const Placeholder(),
                         ),
-                        
+                        MiniPlayerSongDsc(
+                          positionIndex: 1,
+                          controller: controller,
+                        )
                       ],
                     ),
                   ),

@@ -6,6 +6,7 @@ import 'pause_play_widget.dart';
 class AudioControllers extends StatelessWidget {
   const AudioControllers({
     Key? key,
+    required this.isMiniPlayer,
     this.onSkipNext,
     this.onSkipPrevious,
     this.currentRepeatMode,
@@ -13,7 +14,6 @@ class AudioControllers extends StatelessWidget {
     this.handleReapeat,
     this.handleShuffle,
     this.shuffle = false,
-    this.isMiniPlayer = false,
     this.isPlaying = false,
     this.isLoadingOrBuffering = false,
   }) : super(key: key);
@@ -36,7 +36,7 @@ class AudioControllers extends StatelessWidget {
       Icons.repeat_one_rounded,
     ];
 
-    final double btnSize = isMiniPlayer ? 45 : 59;
+    final double btnSize = isMiniPlayer ? 45 : 50;
     final double indicatorSize = isMiniPlayer ? 30 : 60.5;
     final double strokeWidth = isMiniPlayer ? 2.0 : 4.0;
 
@@ -53,12 +53,11 @@ class AudioControllers extends StatelessWidget {
           //* if state of player is mini player, this shuffle icon will
           //* replaces with a player icon
           isMiniPlayer
-              ? Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
-                  child: Image.asset(
-                    'assets/images/headphones_fill.png',
-                    height: 27.0,
-                    width: 27.0,
+              ? const Padding(
+                  padding: EdgeInsets.only(right: 8.0),
+                  child: Icon(
+                    Icons.headset_rounded,
+                    color: Colors.white,
                   ),
                 )
               : actions(
@@ -110,11 +109,15 @@ class AudioControllers extends StatelessWidget {
             ],
           ),
 
-          //* skip to next song
-          actions(onPressed: onSkipNext, iconData: Icons.skip_next_rounded),
-
-          //* if state of player is mini player, this repeat icon will
+          //* if state of player is mini player, the action widgets below will
           //* replaces with an empty box
+
+          //* skip to next song
+          isMiniPlayer
+              ? const SizedBox()
+              : actions(
+                  onPressed: onSkipNext, iconData: Icons.skip_next_rounded),
+
           isMiniPlayer
               ? const SizedBox()
               : actions(
