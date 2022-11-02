@@ -17,8 +17,18 @@ class PlayerSongArtPosition extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isMini = controller.isMiniPlayer;
+
+    double? artSize() {
+      if (isMini) {
+        return controller.defaultSongArtSize;
+      } else {
+        return controller.defaultSongArtSize! + 20;
+      }
+    }
+
     return Positioned(
-      height: controller.defaultSongArtSize,
+      height: artSize(),
       width: controller.defaultSongArtSize,
       top: controller.defaultArtTopMargin(positionIndex),
       child: songArtWidget,

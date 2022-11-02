@@ -28,7 +28,8 @@ class ExpandablePlayerController extends ChangeNotifier {
   }
 
   // default style variables
-  double? get defaultSongArtSize => lerp(_artStartSize, fullWidth(context));
+  double? get defaultSongArtSize => lerp(
+      _artStartSize, fullWidth(context));
 
   double defaultArtTopMargin(int index) => lerp(_artStartMarginTop, 0)!;
 

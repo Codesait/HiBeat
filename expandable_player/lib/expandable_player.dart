@@ -81,16 +81,23 @@ class _ExpandablePlayerState extends State<ExpandablePlayer> {
                     ),
                     child: Stack(
                       children: [
+                        //* player window app bar
                         PlayerAppBar(controller: widget.animationController),
+
+                        //* song image meta data positioning
                         PlayerSongArtPosition(
                           controller: controller,
                           positionIndex: 2,
                           songArtWidget: const Placeholder(),
                         ),
+
+                        //* poistion of the song description when player window is collapsed
                         MiniPlayerSongDsc(
                           positionIndex: 1,
                           controller: controller,
                         )
+                    
+                        
                       ],
                     ),
                   ),
