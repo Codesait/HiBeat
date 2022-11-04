@@ -3,7 +3,6 @@ library mini_player;
 import 'package:flutter/material.dart';
 import 'package:mini_player/utils.dart';
 
-import 'controller.dart';
 
 // ignore: must_be_immutable
 class ExpandablePlayer extends StatefulWidget {
@@ -97,7 +96,7 @@ class _ExpandablePlayerState extends State<ExpandablePlayer> {
                           controller: controller,
                         )
                     
-                        
+
                       ],
                     ),
                   ),
@@ -109,3 +108,4 @@ class _ExpandablePlayerState extends State<ExpandablePlayer> {
         });
   }
 }
+
