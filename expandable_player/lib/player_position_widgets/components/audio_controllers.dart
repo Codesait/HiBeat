@@ -75,6 +75,7 @@ class AudioControllers extends StatelessWidget {
               : actions(
                   onPressed: onSkipPrevious,
                   iconData: Icons.skip_previous_rounded,
+                  
                 ),
 
           //* if state of player is mini player, this shuffle icon will
@@ -124,8 +125,8 @@ class AudioControllers extends StatelessWidget {
                   onPressed: handleReapeat,
                   iconData: icons[index],
                   iconColor: currentRepeatMode == 'None'
-                      ? Colors.grey
-                      : Theme.of(context).colorScheme.secondary,
+                      ? Colors.white60
+                      : Colors.white,
                 ),
         ],
       ),

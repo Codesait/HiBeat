@@ -5,13 +5,11 @@ class PlayerSongArtPosition extends StatelessWidget {
   const PlayerSongArtPosition({
     super.key,
     required this.controller,
-    required this.positionIndex,
     required this.songArtWidget,
   });
 
   final ExpandablePlayerController controller;
 
-  final int positionIndex;
 
   final Widget songArtWidget;
 
@@ -30,7 +28,7 @@ class PlayerSongArtPosition extends StatelessWidget {
     return Positioned(
       height: artSize(),
       width: controller.defaultSongArtSize,
-      top: controller.defaultArtTopMargin(positionIndex),
+      top: controller.defaultArtTopMargin(),
       child: songArtWidget,
     );
   }

@@ -3,7 +3,6 @@ library mini_player;
 import 'package:flutter/material.dart';
 import 'package:mini_player/utils.dart';
 
-
 // ignore: must_be_immutable
 class ExpandablePlayer extends StatefulWidget {
   ExpandablePlayer({
@@ -57,7 +56,7 @@ class _ExpandablePlayerState extends State<ExpandablePlayer> {
                 left: 0,
                 right: 0,
                 bottom: (controller.isMiniPlayer && widget.enableBottomPadding)
-                    ? 70
+                    ? fullHeight(context) - fullHeight(context) / 1.1
                     : 0,
                 child: GestureDetector(
                   onVerticalDragUpdate: controller
@@ -83,10 +82,14 @@ class _ExpandablePlayerState extends State<ExpandablePlayer> {
                         //* player window app bar
                         PlayerAppBar(controller: widget.animationController),
 
+                        PlayerControllersPosition(
+                          controller: controller,
+                          animationController: widget.animationController,
+                        ),
+
                         //* song image meta data positioning
                         PlayerSongArtPosition(
                           controller: controller,
-                          positionIndex: 2,
                           songArtWidget: const Placeholder(),
                         ),
 
@@ -95,8 +98,6 @@ class _ExpandablePlayerState extends State<ExpandablePlayer> {
                           positionIndex: 1,
                           controller: controller,
                         )
-                    
-
                       ],
                     ),
                   ),
@@ -108,4 +109,3 @@ class _ExpandablePlayerState extends State<ExpandablePlayer> {
         });
   }
 }
-

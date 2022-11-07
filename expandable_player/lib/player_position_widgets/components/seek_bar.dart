@@ -1,6 +1,6 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:mini_player/utils.dart';
 
 class SeekBar extends StatefulWidget {
   
@@ -49,7 +49,6 @@ class SeekBarState extends State<SeekBar> {
               inactiveTrackColor:
                   Theme.of(context).colorScheme.secondary.withOpacity(0.3),
               trackHeight: 4.0,
-              // trackShape: RoundedRectSliderTrackShape(),
               trackShape: const RectangularSliderTrackShape(),
             ),
             child: ExcludeSemantics(
@@ -106,22 +105,16 @@ class SeekBarState extends State<SeekBar> {
             left: 25.0,
             bottom: 0.0,
             child: Text(
-              RegExp(r'((^0*[1-9]\d*:)?\d{2}:\d{2})\.\d+$')
-                      .firstMatch('$_position')
-                      ?.group(1) ??
+               '$_position'.formatSeekStreamPositionDuration() ??
                   '$_position',
-              // style: Theme.of(context).textTheme.caption,
             ),
           ),
           Positioned(
             right: 25.0,
             bottom: 0.0,
             child: Text(
-              RegExp(r'((^0*[1-9]\d*:)?\d{2}:\d{2})\.\d+$')
-                      .firstMatch('$_duration')
-                      ?.group(1) ??
+              '$_duration'.formatSeekStreamPositionDuration() ??
                   '$_duration',
-              // style: Theme.of(context).textTheme.caption,
             ),
           ),
         ],

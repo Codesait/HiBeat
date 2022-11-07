@@ -12,8 +12,8 @@ class ExpandablePlayerController extends ChangeNotifier {
   final double _minHeight = 68;
   final double _artStartSize = 50;
   final double _titleEndSize = 55;
-  final double _titleEndMarginTop = 80;
-  final double _titleStartMarginTop = 10;
+  final double _playerControllersEndMarginTop = 80;
+  final double _playerControllersStartMarginTop = 10;
   final double _artStartMarginTop = 7;
   final double _artEndMarginTop = 40;
   final double _artVerticalSpacing = 35;
@@ -31,22 +31,24 @@ class ExpandablePlayerController extends ChangeNotifier {
   double? get defaultSongArtSize => lerp(
       _artStartSize, fullWidth(context));
 
-  double defaultArtTopMargin(int index) => lerp(_artStartMarginTop, 0)!;
+  double defaultArtTopMargin() => lerp(_artStartMarginTop, 0)!;
 
-  double defaultTitleTopMargin(int index) =>
-      lerp(_titleStartMarginTop,
-          _titleEndMarginTop + index * (8 + _titleEndSize))! -
+  double defaultControllersTopMargin() =>
+      lerp(_playerControllersStartMarginTop,
+          _playerControllersEndMarginTop )! -
       10;
 
   //ANOTHER STYLE
 
   double get minHeight => _minHeight;
+  
+  double get maxHeight => fullHeight(context);
 
   double? get headerTopMargin => lerp(1, MediaQuery.of(context).padding.top);
 
   double? get headerFontSize => lerp(14, 24);
 
-  double get maxHeight => fullHeight(context);
+  
 
   double? get songArtSize => lerp(_artStartSize, fullWidth(context) / 1.2);
 
@@ -65,8 +67,8 @@ class ExpandablePlayerController extends ChangeNotifier {
 
   double titleTopMargin(int index) =>
       lerp(
-        _titleStartMarginTop,
-        _titleEndMarginTop + index * (8 + _titleEndSize),
+        _playerControllersStartMarginTop,
+        _playerControllersEndMarginTop + index * (8 + _titleEndSize),
       )! -
       10;
   double? artLeftMargin(int index, {double? deviceWidth}) => lerp(

@@ -11,7 +11,7 @@ class ExploreView extends StatelessWidget {
     return ViewsParentContainer(
       alignment: Alignment.center,
       padding: const EdgeInsets.only(top: 40, bottom: 40),
-      height: getContainerHeight(context),
+      height: fullHeight(context),
       width: fullWidth(context),
       child: ListView(
         children: const [

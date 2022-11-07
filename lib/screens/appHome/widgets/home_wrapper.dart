@@ -52,9 +52,10 @@ class _HomeWrapperState extends State<HomeWrapper>
     return Scaffold(
       body: Stack(
         children: <Widget>[
+          //*
           //* custom bottom navigation wrapper
           Positioned(
-            top: 18,
+            top: 0,
             left: 0,
             right: 0,
             height: fullHeight(context),
@@ -69,7 +70,6 @@ class _HomeWrapperState extends State<HomeWrapper>
                 animateTabTransition: true,
                 curve: Curves.bounceIn,
               ),
-              //margin: const EdgeInsets.only(top: 100),
               //* custom navigation widget
               customWidget: hideNav
                   ? const SizedBox()
