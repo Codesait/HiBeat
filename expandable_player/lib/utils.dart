@@ -20,6 +20,11 @@ double fullHeight(BuildContext context) {
   return MediaQuery.of(context).size.height;
 }
 
+double getContainerHeight(BuildContext context) {
+  final mq = MediaQuery.of(context);
+  return mq.size.height - AppBar().preferredSize.height - mq.padding.vertical;
+}
+
 extension FormatDuration on String {
 
   static const regx = r'((^0*[1-9]\d*:)?\d{2}:\d{2})\.\d+$';

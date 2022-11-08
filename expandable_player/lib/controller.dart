@@ -28,27 +28,30 @@ class ExpandablePlayerController extends ChangeNotifier {
   }
 
   // default style variables
-  double? get defaultSongArtSize => lerp(
-      _artStartSize, fullWidth(context));
+  double? get defaultSongArtSize => lerp(_artStartSize, fullWidth(context));
 
   double defaultArtTopMargin() => lerp(_artStartMarginTop, 0)!;
 
   double defaultControllersTopMargin() =>
-      lerp(_playerControllersStartMarginTop,
-          _playerControllersEndMarginTop )! -
+      lerp(_playerControllersStartMarginTop, _playerControllersEndMarginTop)! -
       10;
+
+  double playerColapsedPosition() {
+    if (fullHeight(context) > 700) {
+      return fullHeight(context) / 9.5;
+    }
+    return fullHeight(context) / 12;
+  }
 
   //ANOTHER STYLE
 
   double get minHeight => _minHeight;
-  
+
   double get maxHeight => fullHeight(context);
 
   double? get headerTopMargin => lerp(1, MediaQuery.of(context).padding.top);
 
   double? get headerFontSize => lerp(14, 24);
-
-  
 
   double? get songArtSize => lerp(_artStartSize, fullWidth(context) / 1.2);
 
@@ -104,7 +107,7 @@ class ExpandablePlayerController extends ChangeNotifier {
 
   void handleDragUpdate(DragUpdateDetails details) {
     controller.value -= (details.primaryDelta! / maxHeight);
-
+    print('full height is: ${fullHeight(context).toString()}');
     notifyListeners();
   }
 
