@@ -5,11 +5,9 @@ class MiniPlayerSongDsc extends StatelessWidget {
   const MiniPlayerSongDsc({
     super.key,
     required this.controller,
-    required this.positionIndex,
   });
 
   final ExpandablePlayerController controller;
-  final int positionIndex;
 
   @override
   Widget build(BuildContext context) {

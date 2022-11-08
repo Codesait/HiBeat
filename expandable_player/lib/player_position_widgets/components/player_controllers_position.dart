@@ -17,12 +17,11 @@ class PlayerControllersPosition extends StatelessWidget {
       height: fullHeight(context) / 2.5,
       width: fullWidth(context),
       bottom: controller.defaultControllersTopMargin(),
-      //left: 0,
       child: Opacity(
         opacity: animationController.value,
         child: Container(
-          alignment: Alignment.topCenter,
           width: fullWidth(context),
+          color: Colors.orange,
           child: Column(
             children: const [
               MainPlayerSongDesc(),

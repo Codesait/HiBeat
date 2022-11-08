@@ -59,11 +59,9 @@ class _ExpandablePlayerState extends State<ExpandablePlayer> {
                     ? controller.playerColapsedPosition()
                     : 0,
                 child: GestureDetector(
-                  onVerticalDragUpdate: controller
-                      .handleDragUpdate, //<-- Add verticalDragUpdate callback
+                  onVerticalDragUpdate: controller.handleDragUpdate,
                   onVerticalDragEnd: controller.handleDragEnd,
                   onTap: controller.isMiniPlayer ? controller.toggle : null,
-
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 300),
                     decoration: BoxDecoration(
@@ -79,9 +77,6 @@ class _ExpandablePlayerState extends State<ExpandablePlayer> {
                     ),
                     child: Stack(
                       children: [
-                        //* player window app bar
-                        PlayerAppBar(controller: widget.animationController),
-
                         PlayerControllersPosition(
                           controller: controller,
                           animationController: widget.animationController,
@@ -95,9 +90,11 @@ class _ExpandablePlayerState extends State<ExpandablePlayer> {
 
                         //* poistion of the song description when player window is collapsed
                         MiniPlayerSongDsc(
-                          positionIndex: 1,
                           controller: controller,
-                        )
+                        ),
+
+                        //* player window app bar
+                        PlayerAppBar(controller: widget.animationController),
                       ],
                     ),
                   ),

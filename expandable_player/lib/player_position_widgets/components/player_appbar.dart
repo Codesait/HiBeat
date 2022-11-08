@@ -17,7 +17,7 @@ class PlayerAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: 45,
+      top: 20,
       child: Opacity(
         opacity: controller.value,
         child: SizedBox(
@@ -42,7 +42,7 @@ class PlayerAppBar extends StatelessWidget {
                       ),
                     ),
                   ),
-                ), 
+                ),
               ],
             ),
           ),

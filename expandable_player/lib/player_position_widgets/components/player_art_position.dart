@@ -10,7 +10,6 @@ class PlayerSongArtPosition extends StatelessWidget {
 
   final ExpandablePlayerController controller;
 
-
   final Widget songArtWidget;
 
   @override
@@ -21,7 +20,7 @@ class PlayerSongArtPosition extends StatelessWidget {
       if (isMini) {
         return controller.defaultSongArtSize;
       } else {
-        return controller.defaultSongArtSize! + 20;
+        return controller.defaultSongArtSize!;
       }
     }
 
