@@ -3,8 +3,8 @@ import 'package:hi_beat/src/components.dart';
 import 'package:hi_beat/src/res.dart';
 import 'package:hi_beat/src/utils.dart';
 
-class HomeWidgetsWrapper extends StatelessWidget {
-  const HomeWidgetsWrapper({
+class ExploreWidgetsWrapper extends StatelessWidget {
+  const ExploreWidgetsWrapper({
     super.key,
     required this.child,
     required this.cateroryTitle,
@@ -41,7 +41,7 @@ class SuggestedArtists extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HomeWidgetsWrapper(
+    return ExploreWidgetsWrapper(
         cateroryTitle: 'Artists You May Like.',
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
@@ -85,7 +85,7 @@ class MadeForYou extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HomeWidgetsWrapper(
+    return ExploreWidgetsWrapper(
         cateroryTitle: 'Made for you',
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
@@ -129,7 +129,7 @@ class NewReleases extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HomeWidgetsWrapper(
+    return ExploreWidgetsWrapper(
       cateroryTitle: 'Discover new releases',
       child: SizedBox(
         height: fullHeight(context) / 4,
@@ -145,7 +145,7 @@ class FeaturedPlaylists extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HomeWidgetsWrapper(
+    return ExploreWidgetsWrapper(
         cateroryTitle: 'Featured playlists',
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),

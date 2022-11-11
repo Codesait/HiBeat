@@ -42,12 +42,11 @@ class AppTheme {
       bodyText1: TextStyle(color: AppColors.white),
       bodyText2: TextStyle(color: AppColors.white, fontWeight: FontWeight.bold),
       overline: TextStyle(
-        color: AppColors.grey,
+        color: AppColors.white,
         fontWeight: FontWeight.w600,
       ),
     ),
-    colorScheme:
-        ColorScheme.fromSwatch().copyWith(secondary: AppColors.primary),
+    colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green),
   );
 
   /// light theme data
@@ -91,11 +90,10 @@ class AppTheme {
       bodyText1: TextStyle(color: AppColors.black),
       bodyText2: TextStyle(color: AppColors.black, fontWeight: FontWeight.bold),
       overline: TextStyle(
-        color: AppColors.grey,
+        color: AppColors.white,
         fontWeight: FontWeight.w600,
       ),
     ),
-    colorScheme:
-        ColorScheme.fromSwatch().copyWith(secondary: AppColors.primary),
+    colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green),
   );
 }

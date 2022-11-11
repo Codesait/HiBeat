@@ -10,7 +10,6 @@ class ExpandablePlayer extends StatefulWidget {
     required this.context,
     required this.animationController,
     this.enableBottomPadding = false,
-    this.isExpanded,
   });
 
   //* Build context
@@ -22,7 +21,6 @@ class ExpandablePlayer extends StatefulWidget {
   //* enable bottom padding
   final bool enableBottomPadding;
 
-  final ValueChanged<AnimationController>? isExpanded;
 
   @override
   State<ExpandablePlayer> createState() => _ExpandablePlayerState();
@@ -56,7 +54,7 @@ class _ExpandablePlayerState extends State<ExpandablePlayer> {
                 left: 0,
                 right: 0,
                 bottom: (controller.isMiniPlayer && widget.enableBottomPadding)
-                    ? controller.playerColapsedPosition()
+                    ? controller.playerCollapsedPosition()
                     : 0,
                 child: GestureDetector(
                   onVerticalDragUpdate: controller.handleDragUpdate,
@@ -94,7 +92,10 @@ class _ExpandablePlayerState extends State<ExpandablePlayer> {
                         ),
 
                         //* player window app bar
-                        PlayerAppBar(controller: widget.animationController),
+                        PlayerAppBar(
+                          controller: widget.animationController,
+                          onMinimizeBtnTapped: controller.toggle,
+                        ),
                       ],
                     ),
                   ),

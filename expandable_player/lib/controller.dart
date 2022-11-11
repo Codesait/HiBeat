@@ -33,10 +33,12 @@ class ExpandablePlayerController extends ChangeNotifier {
   double defaultArtTopMargin() => lerp(_artStartMarginTop, 0)!;
 
   double defaultControllersTopMargin() =>
-      lerp(_playerControllersStartMarginTop, _playerControllersEndMarginTop)!;
+      lerp(_playerControllersStartMarginTop, 0)!;
 
-  double playerColapsedPosition() {
-    if (fullHeight(context) > 700) {
+  double playerCollapsedPosition() {
+    if (fullHeight(context) == 780) {
+      return 55;
+    } else if (fullHeight(context) > 780) {
       return fullHeight(context) / 9.5;
     }
     return fullHeight(context) / 12;

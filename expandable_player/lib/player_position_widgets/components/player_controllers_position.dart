@@ -20,12 +20,11 @@ class PlayerControllersPosition extends StatelessWidget {
       child: Opacity(
         opacity: animationController.value,
         child: Container(
+          alignment: Alignment.bottomCenter,
           width: fullWidth(context),
-          color: Colors.orange,
           child: Column(
             children: const [
               MainPlayerSongDesc(),
-              SizedBox(height: 8.0),
               SeekBarStreamWrap(),
               AudioControllers(isMiniPlayer: false)
             ],

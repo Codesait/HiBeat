@@ -65,6 +65,7 @@ class _HomeWrapperState extends State<HomeWrapper>
               screens: _bottomNavScreens,
               itemCount: 5,
               hideNavigationBar: false,
+              resizeToAvoidBottomInset: true,
               backgroundColor: Theme.of(context).backgroundColor,
               screenTransitionAnimation: const ScreenTransitionAnimation(
                 animateTabTransition: true,
@@ -84,6 +85,7 @@ class _HomeWrapperState extends State<HomeWrapper>
             ),
           ),
 
+          //* appbar position
           Positioned(
             top: 0,
             left: 0,
@@ -99,7 +101,6 @@ class _HomeWrapperState extends State<HomeWrapper>
             context: context,
             animationController: controller,
             enableBottomPadding: true,
-            isExpanded: (value) {},
           )
         ],
       ),

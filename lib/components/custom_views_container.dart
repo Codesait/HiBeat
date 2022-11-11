@@ -4,7 +4,7 @@ class ViewsParentContainer extends StatelessWidget {
   const ViewsParentContainer({
     super.key,
     required this.child,
-    this.padding,
+    this.padding = const EdgeInsets.only(top: 40, bottom: 60),
     this.margin,
     this.alignment,
     this.width,

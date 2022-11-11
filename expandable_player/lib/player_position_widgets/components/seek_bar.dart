@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:mini_player/utils.dart';
 
 class SeekBar extends StatefulWidget {
-  
-
-  const SeekBar({super.key, 
+  const SeekBar({
+    super.key,
     required this.duration,
     required this.position,
     required this.bufferedPosition,
@@ -45,9 +44,8 @@ class SeekBarState extends State<SeekBar> {
           SliderTheme(
             data: _sliderThemeData.copyWith(
               thumbShape: HiddenThumbComponentShape(),
-              activeTrackColor: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
-              inactiveTrackColor:
-                  Theme.of(context).colorScheme.secondary.withOpacity(0.3),
+              activeTrackColor: Colors.white54,
+              inactiveTrackColor: Colors.white30,
               trackHeight: 4.0,
               trackShape: const RectangularSliderTrackShape(),
             ),
@@ -76,8 +74,8 @@ class SeekBarState extends State<SeekBar> {
           SliderTheme(
             data: _sliderThemeData.copyWith(
               inactiveTrackColor: Colors.transparent,
-              activeTrackColor: Theme.of(context).colorScheme.secondary,
-              thumbColor: Theme.of(context).colorScheme.secondary,
+              activeTrackColor: Colors.white,
+              thumbColor: Colors.white,
               trackHeight: 4.0,
             ),
             child: Slider(
@@ -105,16 +103,16 @@ class SeekBarState extends State<SeekBar> {
             left: 25.0,
             bottom: 0.0,
             child: Text(
-               '$_position'.formatSeekStreamPositionDuration() ??
-                  '$_position',
+              '$_position'.formatSeekStreamPositionDuration() ?? '$_position',
+              style: Theme.of(context).textTheme.overline,
             ),
           ),
           Positioned(
             right: 25.0,
             bottom: 0.0,
             child: Text(
-              '$_duration'.formatSeekStreamPositionDuration() ??
-                  '$_duration',
+              '$_duration'.formatSeekStreamPositionDuration() ?? '$_duration',
+              style: Theme.of(context).textTheme.overline,
             ),
           ),
         ],

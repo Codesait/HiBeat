@@ -44,7 +44,7 @@ class MiniPlayerSongTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: fullWidth(context),
-      padding: const EdgeInsets.only(left: 30),
+      padding: const EdgeInsets.only(left: 30, right: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -65,7 +65,7 @@ class MiniPlayerSongTitle extends StatelessWidget {
           //
           Flexible(
             child: Container(
-              padding: const EdgeInsets.only(right: 20),
+              margin: const EdgeInsets.only(right: 10),
               child: AudioControllers(
                 isMiniPlayer: isMiniPlayer,
                 onSkipNext: () {},

@@ -20,7 +20,9 @@ class PlayerSongArtPosition extends StatelessWidget {
       if (isMini) {
         return controller.defaultSongArtSize;
       } else {
-        return controller.defaultSongArtSize!;
+        return fullHeight(context) > 700
+            ? fullHeight(context) / 1.7
+            : controller.defaultSongArtSize;
       }
     }
 
