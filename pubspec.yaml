@@ -31,6 +31,10 @@ dependencies:
   flutter:
     sdk: flutter
 
+
+  # local storage 
+  hive_flutter: ^1.1.0
+
   # State-management package
   flutter_riverpod: ^1.0.4
   get: ^4.6.5

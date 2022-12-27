@@ -108,7 +108,6 @@ class ExpandablePlayerController extends ChangeNotifier {
 
   void handleDragUpdate(DragUpdateDetails details) {
     controller.value -= (details.primaryDelta! / maxHeight);
-    print('full height is: ${fullHeight(context).toString()}');
     notifyListeners();
   }
 

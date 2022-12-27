@@ -21,7 +21,6 @@ class ExpandablePlayer extends StatefulWidget {
   //* enable bottom padding
   final bool enableBottomPadding;
 
-
   @override
   State<ExpandablePlayer> createState() => _ExpandablePlayerState();
 }
