@@ -47,14 +47,10 @@ class MyLibraryViewState extends ConsumerState<MyLibraryView>
               SizedBox(
                 height: getContainerHeight(context),
                 child: TabBarView(
-                    physics: const NeverScrollableScrollPhysics(),
-                    controller: tabController,
-                    children: const [
-                      MyPlayLists(),
-                      MySongs(),
-                      MyAlbums(),
-                      MyArtists(),
-                    ]),
+                  physics: const NeverScrollableScrollPhysics(),
+                  controller: tabController,
+                  children: provider.tabViews,
+                ),
               ),
             ],
           ),

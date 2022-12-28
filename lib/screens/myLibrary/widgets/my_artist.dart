@@ -6,6 +6,7 @@ class MyArtists extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //return const ArtistGridLoader();
     return ViewsParentContainer(
       padding: const EdgeInsets.only(bottom: 190),
       child: GridView.builder(

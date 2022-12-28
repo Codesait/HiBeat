@@ -6,6 +6,7 @@ class MyAlbums extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //return const AlbumGridLoader();
     return ViewsParentContainer(
       padding: const EdgeInsets.only(bottom: 190),
       child: GridView.builder(

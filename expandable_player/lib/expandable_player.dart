@@ -26,11 +26,7 @@ class ExpandablePlayer extends StatefulWidget {
 }
 
 class _ExpandablePlayerState extends State<ExpandablePlayer> {
-  //
-  //
-  Future<bool> lo() async {
-    return true;
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -101,8 +97,8 @@ class _ExpandablePlayerState extends State<ExpandablePlayer> {
                 ),
               );
             }),
-        onWillPop: () {
-          return lo();
+        onWillPop: () async {
+          return true;
         });
   }
 }
