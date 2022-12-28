@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hi_beat/src/res.dart';
 import 'package:hi_beat/src/screens.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
@@ -15,11 +16,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: settingsController,
-      builder: (BuildContext context, Widget? child) {
+      builder: (BuildContext context, __) {
         return MaterialApp(
           navigatorKey: navigatorKey,
           debugShowCheckedModeBanner: false,
           home: const SplashScreen(),
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
         );
       },
     );
