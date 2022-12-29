@@ -13,4 +13,6 @@ class AppAssets {
   static String settingIcon = 'settings'.svg;
   static String collectionIconLine = 'collection-line'.svg;
   static String collectionIconFilled = 'collection-filled'.svg;
+  static String notFoundIllustration = 'no-data'.svg;
+
 }

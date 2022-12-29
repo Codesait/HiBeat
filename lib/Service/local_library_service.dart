@@ -1,9 +1,9 @@
+import 'dart:developer';
+
 import 'package:hi_beat/Service/audio_query.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class LocalLibraryService extends OfflineAudioQuery {
-  
-
   List<SongModel> fetchedSongs = [];
   List<dynamic> cachedSongsMap = [];
 
@@ -30,7 +30,6 @@ class LocalLibraryService extends OfflineAudioQuery {
       artworkType: ArtworkType.AUDIO,
     );
   }
-
 
   final Map<int, SongSortType> songSortTypes = {
     0: SongSortType.DISPLAY_NAME,

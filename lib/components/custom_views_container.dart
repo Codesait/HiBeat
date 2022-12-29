@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hi_beat/src/components.dart';
+import 'package:hi_beat/src/res.dart';
+import 'package:hi_beat/utils/mediaquery.dart';
 
 class ViewsParentContainer extends StatelessWidget {
   const ViewsParentContainer({
@@ -9,6 +13,7 @@ class ViewsParentContainer extends StatelessWidget {
     this.alignment,
     this.width,
     this.height,
+    this.notFound = false,
   });
 
   final Widget child;
@@ -16,6 +21,7 @@ class ViewsParentContainer extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final AlignmentGeometry? alignment;
   final double? height, width;
+  final bool notFound;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +33,29 @@ class ViewsParentContainer extends StatelessWidget {
         alignment: alignment,
         height: height,
         width: width,
-        child: child,
+        child: notFound ? const NotFound() : child,
+      ),
+    );
+  }
+}
+
+class NotFound extends StatelessWidget {
+  const NotFound({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SvgPicture.asset(
+            AppAssets.notFoundIllustration,
+            height: 200,
+            width: 200,
+          ),
+          const Gap(dimension: 10),
+          const Text('Nothing here')
+        ],
       ),
     );
   }

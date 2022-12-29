@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 class BaseViewModel extends ChangeNotifier {
-  bool loading = false;
+  bool loading = true;
 
   void isLoading(bool val) {
     loading = val;
