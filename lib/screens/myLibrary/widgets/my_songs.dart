@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hi_beat/screens/myLibrary/viewmodel/local_songs_viewmodel.dart';
 import 'package:hi_beat/src/components.dart';
+import 'package:on_audio_query/on_audio_query.dart';
 
 class MySongs extends ConsumerStatefulWidget {
   const MySongs({super.key});
@@ -31,7 +32,16 @@ class MySongsState extends ConsumerState<MySongs> {
               padding: EdgeInsets.zero,
               physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) {
-                return const MusicTileStyleOne();
+                /*
+                CREATED A SINGLE SONG MAP
+                */
+                final song = provider.localSongs[index];
+                return MusicTileStyleOne(
+                  songTitle: song.title,
+                  songArtist: song.artist,
+                  localsongId: song.id,
+                  artworkType: ArtworkType.AUDIO,
+                );
               },
             ),
           );

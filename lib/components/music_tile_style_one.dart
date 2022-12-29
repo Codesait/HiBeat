@@ -1,9 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:hi_beat/src/components.dart';
 import 'package:hi_beat/src/utils.dart';
+import 'package:on_audio_query/on_audio_query.dart';
 
 class MusicTileStyleOne extends StatelessWidget {
-  const MusicTileStyleOne({super.key});
+  const MusicTileStyleOne({
+    super.key,
+    this.songTitle,
+    this.songArtist,
+    this.localsongId,
+    this.artworkType,
+  });
+
+  final String? songTitle;
+  final String? songArtist;
+  final int? localsongId;
+  final ArtworkType? artworkType;
 
   final im =
       'https://www.thefarmersdog.com/digest/wp-content/uploads/2021/12/corgi-top-1400x871.jpg';
@@ -11,7 +23,7 @@ class MusicTileStyleOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){},
+      onTap: () {},
       child: Container(
         height: fullHeight(context) * 0.1,
         width: fullWidth(context),
@@ -20,17 +32,19 @@ class MusicTileStyleOne extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SongArt(
-              networkImage: im,
-              height: 80,
-              width: 80,
+            CustomImageProvider(
+              height: 60,
+              width: 60,
+              radius: 10,
+              localsongId: localsongId,
+              artworkType: artworkType,
             ),
             const Gap(dimension: 15),
-            const Expanded(
+            Expanded(
               flex: 2,
               child: MusicTileDescription(
-                songName: 'All of Me',
-                artist: 'John Legend',
+                songName: songTitle ?? 'Unknown',
+                artist: songArtist ?? 'Unknown',
               ),
             ),
             const Expanded(

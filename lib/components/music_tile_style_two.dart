@@ -19,8 +19,8 @@ class MusicTileStyleTwo extends StatelessWidget {
           children: [
             Expanded(
               flex: 3,
-              child: SongArt(
-                networkImage: im,
+              child: CustomImageProvider(
+                imageUrl: im,
                 radius: 2,
               ),
             ),
