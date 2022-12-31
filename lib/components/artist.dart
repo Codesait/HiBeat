@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:hi_beat/src/components.dart';
+import 'package:on_audio_query/on_audio_query.dart';
 
 class ArtistWidget extends StatelessWidget {
-  const ArtistWidget({super.key});
+  const ArtistWidget({
+    super.key,
+    this.artist,
+    this.artworkType,
+    this.localArtistCoverId,
+  });
 
-  final im =
-      'https://www.thefarmersdog.com/digest/wp-content/uploads/2021/12/corgi-top-1400x871.jpg';
+  final String? artist;
+  final ArtworkType? artworkType;
+  final int? localArtistCoverId;
 
   @override
   Widget build(BuildContext context) {
@@ -20,16 +27,17 @@ class ArtistWidget extends StatelessWidget {
             Expanded(
               flex: 3,
               child: CustomImageProvider(
-                imageUrl: im,
+                localsongId: localArtistCoverId,
+                artworkType: artworkType,
                 radius: 100,
               ),
             ),
             const Gap(dimension: 10),
-            const Expanded(
+            Expanded(
               child: MusicTileDescription(
-                songName: 'All of Me',
+                title: artist ?? 'Unknown artist',
                 mainAxisAlignment: MainAxisAlignment.center,
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
               ),
             ),
           ],

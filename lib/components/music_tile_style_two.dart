@@ -37,7 +37,7 @@ class MusicTileStyleTwo extends StatelessWidget {
             const Gap(dimension: 10),
              Expanded(
               child: MusicTileDescription(
-                songName: albumTitle ?? 'Unknown',
+                title: albumTitle ?? 'Unknown',
                 artist: albumDescription ?? 'Unknown',
                 mainAxisAlignment: MainAxisAlignment.start,
                 padding: const EdgeInsets.symmetric(horizontal: 10),

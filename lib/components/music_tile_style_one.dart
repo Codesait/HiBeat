@@ -41,7 +41,7 @@ class MusicTileStyleOne extends StatelessWidget {
             Expanded(
               flex: 2,
               child: MusicTileDescription(
-                songName: songTitle ?? 'Unknown',
+                title: songTitle ?? 'Unknown',
                 artist: songArtist ?? 'Unknown',
               ),
             ),

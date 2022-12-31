@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class MusicTileDescription extends StatelessWidget {
   const MusicTileDescription(
       {super.key,
-      this.songName,
+      this.title,
       this.artist = '',
       this.mainAxisAlignment = MainAxisAlignment.center,
       this.padding = EdgeInsets.zero});
-  final String? songName;
+  final String? title;
   final String? artist;
   final MainAxisAlignment mainAxisAlignment;
   final EdgeInsetsGeometry padding;
@@ -23,7 +23,7 @@ class MusicTileDescription extends StatelessWidget {
         mainAxisAlignment: mainAxisAlignment,
         children: [
           Text(
-            '$songName',
+            '$title',
             maxLines: 1,
             overflow: TextOverflow.fade,
             style: theme.textTheme.bodyText2!.copyWith(fontSize: 15),

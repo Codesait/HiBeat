@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hi_beat/screens/myLibrary/viewmodel/album_viewmodel.dart';
+import 'package:hi_beat/screens/myLibrary/viewmodel/local_album_viewmodel.dart';
 import 'package:hi_beat/src/components.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
@@ -25,6 +25,7 @@ class MyAlbumsState extends ConsumerState<MyAlbums> {
         ? const AlbumGridLoader()
         : ViewsParentContainer(
             padding: const EdgeInsets.only(bottom: 190),
+            notFound: provider.albums.isEmpty,
             child: GridView.builder(
               itemCount: provider.albums.length,
               physics: const BouncingScrollPhysics(),
