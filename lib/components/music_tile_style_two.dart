@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:hi_beat/src/components.dart';
+import 'package:on_audio_query/on_audio_query.dart';
 
 class MusicTileStyleTwo extends StatelessWidget {
-  const MusicTileStyleTwo({super.key});
+  const MusicTileStyleTwo({
+    super.key,
+    this.albumTitle,
+    this.albumDescription,
+    this.artworkType,
+    this.localAlbumCoverId,
+  });
 
-  final im =
-      'https://www.thefarmersdog.com/digest/wp-content/uploads/2021/12/corgi-top-1400x871.jpg';
+  final String? albumTitle;
+  final String? albumDescription;
+  final ArtworkType? artworkType;
+  final int? localAlbumCoverId;
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +29,18 @@ class MusicTileStyleTwo extends StatelessWidget {
             Expanded(
               flex: 3,
               child: CustomImageProvider(
-                imageUrl: im,
                 radius: 2,
+                localsongId: localAlbumCoverId,
+                artworkType: artworkType,
               ),
             ),
             const Gap(dimension: 10),
-            const Expanded(
+             Expanded(
               child: MusicTileDescription(
-                songName: 'All of Me',
-                artist: 'John Legend',
+                songName: albumTitle ?? 'Unknown',
+                artist: albumDescription ?? 'Unknown',
                 mainAxisAlignment: MainAxisAlignment.start,
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
               ),
             ),
           ],

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:hi_beat/Service/audio_query.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
@@ -8,6 +6,20 @@ class LocalLibraryService extends OfflineAudioQuery {
   List<dynamic> cachedSongsMap = [];
 
   int minDuration = 10;
+
+  final Map<int, SongSortType> songSortTypes = {
+    0: SongSortType.DISPLAY_NAME,
+    1: SongSortType.DATE_ADDED,
+    2: SongSortType.ALBUM,
+    3: SongSortType.ARTIST,
+    4: SongSortType.DURATION,
+    5: SongSortType.SIZE,
+  };
+
+  final Map<int, OrderType> songOrderTypes = {
+    0: OrderType.ASC_OR_SMALLER,
+    1: OrderType.DESC_OR_GREATER,
+  };
 
   /// [getLocalSongs] checks if permissions are granted, then fetch music
   Future<void> getLocalSongs() async {
@@ -31,17 +43,25 @@ class LocalLibraryService extends OfflineAudioQuery {
     );
   }
 
-  final Map<int, SongSortType> songSortTypes = {
-    0: SongSortType.DISPLAY_NAME,
-    1: SongSortType.DATE_ADDED,
-    2: SongSortType.ALBUM,
-    3: SongSortType.ARTIST,
-    4: SongSortType.DURATION,
-    5: SongSortType.SIZE,
-  };
+  Future<List<AlbumModel>> fetchLocalAlbums({
+    AlbumSortType? sortType,
+    OrderType? orderType,
+}) async{
+    return await getAlbums(
+      sortType: sortType,
+      orderType: orderType,
+    );
+  }
 
-  final Map<int, OrderType> songOrderTypes = {
-    0: OrderType.ASC_OR_SMALLER,
-    1: OrderType.DESC_OR_GREATER,
-  };
+  Future<List<ArtistModel>> fetchLocalArtists({
+    ArtistSortType? sortType,
+    OrderType? orderType,
+  }) async{
+    return await getArtists(
+      sortType: sortType,
+      orderType: orderType,
+    );
+  }
+
+
 }

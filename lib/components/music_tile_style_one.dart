@@ -8,18 +8,16 @@ class MusicTileStyleOne extends StatelessWidget {
     super.key,
     this.songTitle,
     this.songArtist,
-    this.localsongId,
+    this.localSongId,
     this.artworkType,
   });
 
   final String? songTitle;
   final String? songArtist;
-  final int? localsongId;
+  final int? localSongId;
   final ArtworkType? artworkType;
 
-  final im =
-      'https://www.thefarmersdog.com/digest/wp-content/uploads/2021/12/corgi-top-1400x871.jpg';
-
+  
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -36,7 +34,7 @@ class MusicTileStyleOne extends StatelessWidget {
               height: 60,
               width: 60,
               radius: 10,
-              localsongId: localsongId,
+              localsongId: localSongId,
               artworkType: artworkType,
             ),
             const Gap(dimension: 15),

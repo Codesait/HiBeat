@@ -8,6 +8,9 @@ final localSongsViewModel =
 
 class LocalSongsViewModel extends BaseViewModel {
   final service = LocalLibraryService();
+
+
+
   List<SongModel> _localSongs = [];
   List<dynamic> _localSongsMap = [];
 
@@ -18,7 +21,7 @@ class LocalSongsViewModel extends BaseViewModel {
   Future<void> fetchLocalSongs() async {
     await service.requestPermission();
     // delaying fetching local songs for two seconds
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 1), () {
       service.getLocalSongs().whenComplete(() {
         _localSongs = service.fetchedSongs;
         _localSongsMap = service.cachedSongsMap;

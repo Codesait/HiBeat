@@ -24,7 +24,6 @@ export '../screens/myLibrary/widgets/my_artist.dart';
 export '../screens/myLibrary/widgets/my_playlist.dart';
 
 
-
 // profile view
 export '../screens/profile/view/profile.dart';
 

@@ -37,9 +37,10 @@ class MySongsState extends ConsumerState<MySongs> {
                 */
                 final song = provider.localSongs[index];
                 return MusicTileStyleOne(
+                  key: Key(song.id.toString()),
                   songTitle: song.title,
                   songArtist: song.artist,
-                  localsongId: song.id,
+                  localSongId: song.id,
                   artworkType: ArtworkType.AUDIO,
                 );
               },
