@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hi_beat/src/res.dart';
+import 'package:hi_beat/src/screens.dart';
 
 class SliverCustomAppBar extends StatelessWidget {
   const SliverCustomAppBar({
@@ -15,7 +17,7 @@ class SliverCustomAppBar extends StatelessWidget {
     final extraTopPadding = MediaQuery.of(context).size.height * 0.05;
     //app bar content padding
     final padding = EdgeInsets.only(
-        top: MediaQuery.of(context).padding.top + extraTopPadding,
+        top: MediaQuery.of(context).padding.top,
         right: 10,
         left: 10);
 
@@ -27,7 +29,7 @@ class SliverCustomAppBar extends StatelessWidget {
             builder: (context, shrinkOffset) {
               final double shrinkToMaxAppBarHeightRatio =
                   shrinkOffset / maxAppBarHeight;
-              const double animatAlbumImageFromPoint = 0.4;
+              const double animatAlbumImageFromPoint = 20;
               final animateAlbumImage =
                   shrinkToMaxAppBarHeightRatio >= animatAlbumImageFromPoint;
               final animateOpacityToZero = shrinkToMaxAppBarHeightRatio > 0.6;
@@ -48,6 +50,7 @@ class SliverCustomAppBar extends StatelessWidget {
                 children: [
                   Positioned(
                     top: albumPositionFromTop,
+                    bottom: 0,
                     child: AlbumImage(
                       padding: padding,
                       animateOpacityToZero: animateOpacityToZero,
@@ -61,12 +64,12 @@ class SliverCustomAppBar extends StatelessWidget {
                     duration: const Duration(milliseconds: 150),
                     decoration: BoxDecoration(
                       gradient: showFixedAppBar
-                          ? const LinearGradient(
+                          ? const  LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                           colors: [
-                            kAppBarPrimary,
-                            kAppBarSecondary,
+                            AppColors.primary,
+                            AppColors.primary,
                           ],
                           stops: [
                             0,

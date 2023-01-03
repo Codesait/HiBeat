@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hi_beat/src/components.dart';
+import 'package:hi_beat/src/screens.dart';
+import 'package:hi_beat/src/utils.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class MusicTileStyleTwo extends StatelessWidget {
@@ -19,7 +21,9 @@ class MusicTileStyleTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Nav.goTo(const AlbumDetailedView());
+      },
       child: Container(
         margin: const EdgeInsets.only(bottom: 5),
         child: Column(

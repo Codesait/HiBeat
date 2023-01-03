@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:hi_beat/src/res.dart';
+import 'package:hi_beat/src/screens.dart';
 
-class SpotifyAlbumView extends StatefulWidget {
-  const SpotifyAlbumView({Key? key}) : super(key: key);
+class AlbumDetailedView extends StatefulWidget {
+  const AlbumDetailedView({Key? key}) : super(key: key);
 
   @override
-  _SpotifyAlbumViewState createState() => _SpotifyAlbumViewState();
+  AlbumDetailedViewState createState() => AlbumDetailedViewState();
 }
 
-class _SpotifyAlbumViewState extends State<SpotifyAlbumView> {
+class AlbumDetailedViewState extends State<AlbumDetailedView> {
   late ScrollController _scrollController;
 
   late double maxAppBarHeight;
@@ -24,21 +26,21 @@ class _SpotifyAlbumViewState extends State<SpotifyAlbumView> {
   @override
   Widget build(BuildContext context) {
     maxAppBarHeight = MediaQuery.of(context).size.height * 0.5;
-    minAppBarHeight = MediaQuery.of(context).padding.top +
+    minAppBarHeight =
         MediaQuery.of(context).size.height * 0.1;
-    playPauseButtonSize = (MediaQuery.of(context).size.width / 320) * 50 > 80
+    playPauseButtonSize = (MediaQuery.of(context).size.width / 320) * 40 > 80
         ? 80
-        : (MediaQuery.of(context).size.width / 320) * 50;
+        : (MediaQuery.of(context).size.width / 320) * 40;
     infoBoxHeight = 180;
     return Scaffold(
       body: DecoratedBox(
-        decoration: const BoxDecoration(
+        decoration: const  BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                kPrimaryColor,
-                Colors.black,
+                AppColors.primary,
+                AppColors.primary,
               ],
               stops: [
                 0,
@@ -50,7 +52,7 @@ class _SpotifyAlbumViewState extends State<SpotifyAlbumView> {
             CustomScrollView(
               controller: _scrollController,
               slivers: [
-                SliverCustomeAppBar(
+                SliverCustomAppBar(
                   maxAppBarHeight: maxAppBarHeight,
                   minAppBarHeight: minAppBarHeight,
                 ),

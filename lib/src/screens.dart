@@ -31,4 +31,12 @@ export '../screens/profile/view/profile.dart';
 // genre view
 export '../screens/genre/view/genre.dart';
 
-
+// album detail view
+export '../screens/album/view/album_view.dart';
+export '../screens/album/widgets/sliver_custom_appbar/custom_flexible_space.dart';
+export '../screens/album/widgets/sliver_custom_appbar/fixed_appbar.dart';
+export '../screens/album/widgets/sliver_custom_appbar/sliver_appbar_delegate.dart';
+export '../screens/album/widgets/sliver_custom_appbar/sliver_custom_appbar.dart';
+export '../screens/album/widgets/album_info.dart';
+export '../screens/album/widgets/album_song_list.dart';
+export '../screens/album/widgets/pause_play_btn.dart';

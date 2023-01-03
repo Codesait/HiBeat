@@ -26,14 +26,13 @@ class MusicTileStyleOne extends StatelessWidget {
         height: fullHeight(context) * 0.1,
         width: fullWidth(context),
         padding: const EdgeInsets.only(left: 15),
-        margin: const EdgeInsets.only(bottom: 15),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             CustomImageProvider(
               height: 60,
               width: 60,
-              radius: 10,
+              radius: 8,
               localsongId: localSongId,
               artworkType: artworkType,
             ),

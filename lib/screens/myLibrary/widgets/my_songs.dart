@@ -36,6 +36,7 @@ class MySongsState extends ConsumerState<MySongs> {
                 CREATED A SINGLE SONG MAP
                 */
                 final song = provider.localSongs[index];
+
                 return MusicTileStyleOne(
                   key: Key(song.id.toString()),
                   songTitle: song.title,
