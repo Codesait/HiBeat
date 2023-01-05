@@ -7,10 +7,12 @@ class SliverCustomAppBar extends StatelessWidget {
     Key? key,
     required this.maxAppBarHeight,
     required this.minAppBarHeight,
+    required this.appBarTitle,
   }) : super(key: key);
 
   final double maxAppBarHeight;
   final double minAppBarHeight;
+  final String appBarTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +89,7 @@ class SliverCustomAppBar extends StatelessWidget {
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width,
                         height: double.maxFinite,
-                        child: FixedAppBar(titleOpacity: titleOpacity),
+                        child: FixedAppBar(titleOpacity: titleOpacity, title: appBarTitle,),
                       ),
                     ),
                   ),

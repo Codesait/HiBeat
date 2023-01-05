@@ -11,19 +11,19 @@ class MusicTileStyleTwo extends StatelessWidget {
     this.albumDescription,
     this.artworkType,
     this.localAlbumCoverId,
+    this.onTap,
   });
 
   final String? albumTitle;
   final String? albumDescription;
   final ArtworkType? artworkType;
   final int? localAlbumCoverId;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Nav.goTo(const AlbumDetailedView());
-      },
+      onTap: onTap,
       child: Container(
         margin: const EdgeInsets.only(bottom: 5),
         child: Column(

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hi_beat/src/res.dart';
 import 'package:hi_beat/src/screens.dart';
+import 'package:on_audio_query/on_audio_query.dart';
 
 class AlbumDetailedView extends StatefulWidget {
-  const AlbumDetailedView({Key? key}) : super(key: key);
+  const AlbumDetailedView({Key? key, this.albumModel,}) : super(key: key);
+  final AlbumModel? albumModel;
 
   @override
   AlbumDetailedViewState createState() => AlbumDetailedViewState();
@@ -26,15 +28,14 @@ class AlbumDetailedViewState extends State<AlbumDetailedView> {
   @override
   Widget build(BuildContext context) {
     maxAppBarHeight = MediaQuery.of(context).size.height * 0.5;
-    minAppBarHeight =
-        MediaQuery.of(context).size.height * 0.1;
+    minAppBarHeight = MediaQuery.of(context).size.height * 0.1;
     playPauseButtonSize = (MediaQuery.of(context).size.width / 320) * 40 > 80
         ? 80
         : (MediaQuery.of(context).size.width / 320) * 40;
     infoBoxHeight = 180;
     return Scaffold(
       body: DecoratedBox(
-        decoration: const  BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
@@ -55,8 +56,14 @@ class AlbumDetailedViewState extends State<AlbumDetailedView> {
                 SliverCustomAppBar(
                   maxAppBarHeight: maxAppBarHeight,
                   minAppBarHeight: minAppBarHeight,
+                  appBarTitle: widget.albumModel!.album,
                 ),
-                AlbumInfo(infoBoxHeight: infoBoxHeight),
+                AlbumInfo(
+                  infoBoxHeight: infoBoxHeight,
+                  albumTitle: widget.albumModel!.album,
+                  artist:  widget.albumModel!.artist ?? 'Unknown Artist',
+                  numOfSongs:  widget.albumModel!.numOfSongs.toString(),
+                ),
                 const AlbumSongsList(),
               ],
             ),
