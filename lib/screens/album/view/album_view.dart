@@ -44,7 +44,7 @@ class AlbumDetailedViewState extends State<AlbumDetailedView> {
               ],
               stops: [
                 0,
-                0.7
+                0.7,
               ]),
         ),
         child: Stack(

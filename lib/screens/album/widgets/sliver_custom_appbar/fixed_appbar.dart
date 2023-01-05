@@ -14,10 +14,7 @@ class FixedAppBar extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.baseline,
       textBaseline: TextBaseline.ideographic,
       children: [
-        const Icon(
-          Icons.arrow_back,
-          color: Colors.white,
-        ),
+        const BackButton(),
         const SizedBox(width: 30),
         AnimatedOpacity(
           opacity: titleOpacity.clamp(0, 1),

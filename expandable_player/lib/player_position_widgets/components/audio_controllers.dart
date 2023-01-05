@@ -16,6 +16,7 @@ class AudioControllers extends StatelessWidget {
     this.shuffle = false,
     this.isPlaying = false,
     this.isLoadingOrBuffering = false,
+    this.positionTag = 'Main_player'
   }) : super(key: key);
   final VoidCallback? onSkipNext;
   final VoidCallback? onSkipPrevious;
@@ -27,6 +28,7 @@ class AudioControllers extends StatelessWidget {
   final bool isMiniPlayer;
   final bool isPlaying;
   final bool isLoadingOrBuffering;
+  final String positionTag;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +62,7 @@ class AudioControllers extends StatelessWidget {
                     color: Colors.white,
                   ),
                 )
-              : actions(
+              : mediaAction(
                   onPressed: handleShuffle,
                   iconData: Icons.shuffle_rounded,
                   iconColor: shuffle
@@ -72,7 +74,7 @@ class AudioControllers extends StatelessWidget {
           //* replaces with an empty box
           isMiniPlayer
               ? const SizedBox()
-              : actions(
+              : mediaAction(
                   onPressed: onSkipPrevious,
                   iconData: Icons.skip_previous_rounded,
                   
@@ -101,6 +103,7 @@ class AudioControllers extends StatelessWidget {
               //* play/pause
               //Todo: pause and play functions
               PausePlayController(
+                heroTag: positionTag,
                 height: btnSize,
                 width: btnSize,
                 playing: isPlaying,
@@ -116,12 +119,12 @@ class AudioControllers extends StatelessWidget {
           //* skip to next song
           isMiniPlayer
               ? const SizedBox()
-              : actions(
+              : mediaAction(
                   onPressed: onSkipNext, iconData: Icons.skip_next_rounded),
 
           isMiniPlayer
               ? const SizedBox()
-              : actions(
+              : mediaAction(
                   onPressed: handleReapeat,
                   iconData: icons[index],
                   iconColor: currentRepeatMode == 'None'
@@ -133,7 +136,7 @@ class AudioControllers extends StatelessWidget {
     );
   }
 
-  Widget actions({
+  Widget mediaAction({
     VoidCallback? onPressed,
     IconData? iconData,
     Color iconColor = Colors.white,

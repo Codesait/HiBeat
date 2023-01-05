@@ -33,4 +33,10 @@ class Nav {
       ),
     ).then((v) => getLogger(className).d('NAVIGATING TO: $page'));
   }
+
+  static void pop() {
+    Navigator.pop(
+      navigatorKey.currentContext!,
+    );
+  }
 }

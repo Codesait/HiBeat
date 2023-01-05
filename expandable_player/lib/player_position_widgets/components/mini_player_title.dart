@@ -12,9 +12,9 @@ class MiniPlayerSongDsc extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      height: controller.defaultSongArtSize, //<-- Specify icon's size
+      height: controller.defaultSongArtSize,
       width: fullWidth(context),
-      left: fullWidth(context) / 10, //<-- Specify icon's left margin
+      left: fullWidth(context) / 10,
       bottom: 5,
       child: Opacity(
         opacity: controller.isMiniPlayer
@@ -34,9 +34,9 @@ class MiniPlayerSongTitle extends StatelessWidget {
     Key? key,
     required this.isMiniPlayer,
     this.artist = 'Unknown',
-    this.songtitle = 'Unknown',
+    this.songTitle = 'Unknown',
   }) : super(key: key);
-  final String songtitle;
+  final String songTitle;
   final String artist;
   final bool isMiniPlayer;
 
@@ -55,7 +55,7 @@ class MiniPlayerSongTitle extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                title(songtitle),
+                title(songTitle),
                 artistName(artist),
               ],
             ),
@@ -67,6 +67,7 @@ class MiniPlayerSongTitle extends StatelessWidget {
             child: Container(
               margin: const EdgeInsets.only(right: 10),
               child: AudioControllers(
+                positionTag: 'mini_state',
                 isMiniPlayer: isMiniPlayer,
                 onSkipNext: () {},
                 onSkipPrevious: () {},

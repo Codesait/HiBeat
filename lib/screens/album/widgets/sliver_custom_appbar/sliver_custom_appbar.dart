@@ -27,30 +27,35 @@ class SliverCustomAppBar extends StatelessWidget {
             maxHeight: maxAppBarHeight,
             minHeight: minAppBarHeight,
             builder: (context, shrinkOffset) {
+
+              /*
+                sliver controllers
+               */
               final double shrinkToMaxAppBarHeightRatio =
                   shrinkOffset / maxAppBarHeight;
-              const double animatAlbumImageFromPoint = 20;
+              const double animateAlbumImageFromPoint = 20;
               final animateAlbumImage =
-                  shrinkToMaxAppBarHeightRatio >= animatAlbumImageFromPoint;
+                  shrinkToMaxAppBarHeightRatio >= animateAlbumImageFromPoint;
               final animateOpacityToZero = shrinkToMaxAppBarHeightRatio > 0.6;
               final albumPositionFromTop = animateAlbumImage
-                  ? (animatAlbumImageFromPoint - shrinkToMaxAppBarHeightRatio) *
+                  ? (animateAlbumImageFromPoint - shrinkToMaxAppBarHeightRatio) *
                   maxAppBarHeight
                   : null;
               final albumImageSize =
                   MediaQuery.of(context).size.height * 0.3 - shrinkOffset / 2;
               final showFixedAppBar = shrinkToMaxAppBarHeightRatio > 0.7;
-              final double titleOpacity = showFixedAppBar
+              final double titleOpacity = (showFixedAppBar
                   ? 1 - (maxAppBarHeight - shrinkOffset) / minAppBarHeight
-                  : 0;
-              print(titleOpacity);
+                  : 0);
+
+              //print(titleOpacity);
+
 
               return Stack(
-                alignment: Alignment.topCenter,
+                alignment: Alignment.center,
                 children: [
                   Positioned(
                     top: albumPositionFromTop,
-                    bottom: 0,
                     child: AlbumImage(
                       padding: padding,
                       animateOpacityToZero: animateOpacityToZero,
@@ -73,7 +78,7 @@ class SliverCustomAppBar extends StatelessWidget {
                           ],
                           stops: [
                             0,
-                            0.5
+                            0.5,
                           ])
                           : null,
                     ),

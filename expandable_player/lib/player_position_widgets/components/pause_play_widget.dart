@@ -6,6 +6,7 @@ class PausePlayController extends StatelessWidget {
     required this.playing,
     required this.onPause,
     required this.onPlay,
+    required this.heroTag,
     this.height = 59,
     this.width = 59,
   }) : super(key: key);
@@ -15,6 +16,7 @@ class PausePlayController extends StatelessWidget {
   final double? width;
   final Function() onPlay;
   final Function() onPause;
+  final String heroTag;
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +29,15 @@ class PausePlayController extends StatelessWidget {
 
   //* if media state is playing, this widgets icon and functon state
   //* changes as well
-  FloatingActionButton playPauseButton(bool isplaying) => FloatingActionButton(
+  FloatingActionButton playPauseButton(bool isPlaying) => FloatingActionButton(
+    key: key,
+        heroTag: heroTag,
         elevation: 10,
         tooltip: 'Play',
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
-        onPressed: isplaying ? onPause : onPlay,
+        onPressed: isPlaying ? onPause : onPlay,
         backgroundColor: Colors.white,
-        child: isplaying
+        child: isPlaying
             ? const Icon(
                 Icons.pause_rounded,
                 color: Colors.green,
