@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:hi_beat/Service/audio_query.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
@@ -23,24 +25,31 @@ class LocalLibraryService extends OfflineAudioQuery {
 
   /// [getLocalSongs] checks if permissions are granted, then fetch music
   Future<void> getLocalSongs() async {
-    //
-    final List<SongModel> temp = await getSongs(
-      sortType: songSortTypes[1],
-      orderType: songOrderTypes[1],
-    );
-    fetchedSongs = temp
-        .where(
-          (i) =>
-              (i.duration ?? 60000) > 1000 * minDuration &&
-              (i.isMusic! || i.isPodcast! || i.isAudioBook!),
-        )
-        .toList();
 
-    cachedSongsMap = await getArtwork(
-      fetchedSongs,
-      songsMap: cachedSongsMap,
-      artworkType: ArtworkType.AUDIO,
-    );
+    try{
+
+      //
+      final List<SongModel> temp = await getSongs(
+        sortType: songSortTypes[1],
+        orderType: songOrderTypes[1],
+      );
+      fetchedSongs = temp
+          .where(
+            (i) =>
+        (i.duration ?? 60000) > 1000 * minDuration &&
+            (i.isMusic! || i.isPodcast! || i.isAudioBook!),
+      )
+          .toList();
+
+      cachedSongsMap = await getArtwork(
+        fetchedSongs,
+        songsMap: cachedSongsMap,
+        artworkType: ArtworkType.AUDIO,
+      );
+    }catch(e){
+      log('Error fetching local songs $e',);
+    }
+
   }
 
   Future<List<AlbumModel>> fetchLocalAlbums({
@@ -48,6 +57,18 @@ class LocalLibraryService extends OfflineAudioQuery {
     OrderType? orderType,
 }) async{
     return await getAlbums(
+      sortType: sortType,
+      orderType: orderType,
+    );
+  }
+
+  Future<List<SongModel>> fetchLAlbumSongs({
+    SongSortType? sortType,
+    OrderType? orderType,
+    required int albumId,
+  }) async{
+    return await getAlbumSongs(
+      albumId,
       sortType: sortType,
       orderType: orderType,
     );

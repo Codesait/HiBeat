@@ -34,7 +34,10 @@ class MyAlbumsState extends ConsumerState<MyAlbums> {
               shrinkWrap: true,
               padding: const EdgeInsets.symmetric(horizontal: 12),
               itemBuilder: (context, index) {
+
+                // album
                 final album = provider.albums[index];
+
                 return  MusicTileStyleTwo(
                   key: Key(album.id.toString()),
                   onTap: (){

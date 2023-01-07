@@ -99,6 +99,20 @@ class OfflineAudioQuery {
     );
   }
 
+  Future<List<SongModel>> getAlbumSongs(
+      int albumId, {
+        SongSortType? sortType,
+        OrderType? orderType,
+        String? path,
+      }) async {
+    return audioQuery.queryAudiosFrom(
+      AudiosFromType.ALBUM_ID,
+      albumId,
+      sortType: sortType ?? SongSortType.DATE_ADDED,
+      orderType: orderType ?? OrderType.DESC_OR_GREATER,
+    );
+  }
+
   Future<List<AlbumModel>> getAlbums({
     AlbumSortType? sortType,
     OrderType? orderType,

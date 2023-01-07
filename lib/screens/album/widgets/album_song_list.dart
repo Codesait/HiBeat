@@ -1,41 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:hi_beat/src/components.dart';
+import 'package:hi_beat/src/res.dart';
+import 'package:on_audio_query/on_audio_query.dart';
 
 class AlbumSongsList extends StatelessWidget {
   const AlbumSongsList({
     Key? key,
+    required this.songs,
   }) : super(key: key);
+
+  final List<SongModel> songs;
 
   @override
   Widget build(BuildContext context) {
+
     return SliverList(
       delegate: SliverChildBuilderDelegate(
-            (context, index) => DecoratedBox(
-          decoration: const BoxDecoration(
-            color: Colors.black,
-          ),
-          child: ListTile(
-            onTap: () {},
-            tileColor: Colors.black,
-            title: const Text(
-              "Tides",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18),
+        childCount: 20,
+        (context, index) {
+          final song = songs[0];
+
+          return  DecoratedBox(
+            decoration: const BoxDecoration(
+              color: AppColors.black,
             ),
-            subtitle: const Text("Ed Sheeran",
-                style: TextStyle(
-                  color: Colors.white,
-                )),
-            trailing: IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.more_vert_rounded,
-                color: Colors.white,
-              ),
+            child: MusicTileStyleOne(
+              songTitle: song.title,
+              songArtist: song.artist,
+              localSongId: song.id,
+              artworkType: ArtworkType.AUDIO,
             ),
-          ),
-        ),
+          );
+        }
       ),
     );
   }

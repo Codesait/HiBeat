@@ -9,7 +9,7 @@ class AlbumInfo extends StatelessWidget {
     required this.artist,
     this.albumDate,
     this.numOfSongs,
-
+    this.isOfflinePlaylist = true,
   }) : super(key: key);
 
   final double infoBoxHeight;
@@ -17,22 +17,25 @@ class AlbumInfo extends StatelessWidget {
   final String artist;
   final String? albumDate;
   final String? numOfSongs;
+  final bool isOfflinePlaylist;
 
   @override
   Widget build(BuildContext context) {
 
-    String? numberOfSongs(){
-      if(numOfSongs != null){
+
+    String? numberOfSongs() {
+      if (numOfSongs != null) {
         final songs = int.parse(numOfSongs!);
         if (songs > 1) {
           return '$numOfSongs songs';
         } else {
           return '$numOfSongs song';
         }
-      }else {
+      } else {
         return null;
       }
     }
+
     return SliverToBoxAdapter(
       child: DecoratedBox(
         decoration: const BoxDecoration(
@@ -48,36 +51,38 @@ class AlbumInfo extends StatelessWidget {
                 1.0,
               ]),
         ),
-        child: SizedBox(
-          height: infoBoxHeight,
+        child: Container(
+          // height: infoBoxHeight,
+          padding: const EdgeInsets.all(5),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: isOfflinePlaylist ? MainAxisAlignment.end: MainAxisAlignment.spaceBetween,
               children: [
-                 Text(
+                Text(
                   albumTitle,
                   style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(
-                  height: 10,
+                const Gap(
+                  dimension: 5,
                 ),
                 Row(
                   mainAxisSize: MainAxisSize.min,
-                  children:  [
-                     Visibility(
-                       visible: albumDate != null,
-                       child: const CircleAvatar(
+                  children: [
+                    Visibility(
+                      visible: !isOfflinePlaylist,
+                      child: const CircleAvatar(
                         backgroundColor: Colors.red,
-                        backgroundImage: NetworkImage('https://api.baskadia.com/static/page/29284/3ebd6bdf-a105-4e41-8635-59ac86d382a0.xs.jpg'),
+                        backgroundImage: NetworkImage(
+                            'https://api.baskadia.com/static/page/29284/3ebd6bdf-a105-4e41-8635-59ac86d382a0.xs.jpg'),
+                      ),
                     ),
-                     ),
-                     Gap(dimension: albumDate != null ? 10: 0),
-                     Text(
+                    Gap(dimension: !isOfflinePlaylist ? 5 : 0),
+                    Text(
                       artist,
                       style: const TextStyle(
                         color: Colors.white,
@@ -87,39 +92,46 @@ class AlbumInfo extends StatelessWidget {
                     const SizedBox.shrink()
                   ],
                 ),
-                const SizedBox(
-                  height: 10,
+                const Gap(
+                  dimension: 5,
                 ),
                 Text(
-                  (albumDate ?? '') + (albumDate == null ? '': '.') + (numberOfSongs() ?? ''),
+                  (albumDate ?? '') +
+                      (albumDate == null ? '' : '.') +
+                      (numberOfSongs() ?? ''),
                   style: const TextStyle(
                     color: Colors.white70,
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
+                const Gap(
+                  dimension: 5,
                 ),
-                Row(
-                  children: [
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.favorite_border,
-                          color: Colors.white,
-                        )),
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.download_outlined,
-                          color: Colors.white,
-                        )),
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.more_vert_rounded,
-                          color: Colors.white,
-                        ))
-                  ],
+                Visibility(
+                  visible: !isOfflinePlaylist,
+                  child: Row(
+                    children: [
+                      IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.favorite_border,
+                              color: Colors.white,
+                            )),
+
+                       IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.download_outlined,
+                              color: Colors.white,
+                            )),
+
+                      IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.more_vert_rounded,
+                            color: Colors.white,
+                          ))
+                    ],
+                  ),
                 )
               ],
             ),

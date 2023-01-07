@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hi_beat/screens/album/viewModel/albumViewModel.dart';
 import 'package:hi_beat/src/res.dart';
 import 'package:hi_beat/src/screens.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
-class AlbumDetailedView extends StatefulWidget {
+class AlbumDetailedView extends ConsumerStatefulWidget {
   const AlbumDetailedView({Key? key, this.albumModel,}) : super(key: key);
   final AlbumModel? albumModel;
 
@@ -11,7 +13,7 @@ class AlbumDetailedView extends StatefulWidget {
   AlbumDetailedViewState createState() => AlbumDetailedViewState();
 }
 
-class AlbumDetailedViewState extends State<AlbumDetailedView> {
+class AlbumDetailedViewState extends ConsumerState<AlbumDetailedView> {
   late ScrollController _scrollController;
 
   late double maxAppBarHeight;
@@ -22,6 +24,7 @@ class AlbumDetailedViewState extends State<AlbumDetailedView> {
   @override
   void initState() {
     super.initState();
+    ref.read(albumDetailViewModel).fetchAlbumSongs(widget.albumModel!.id);
     _scrollController = ScrollController();
   }
 
@@ -32,7 +35,7 @@ class AlbumDetailedViewState extends State<AlbumDetailedView> {
     playPauseButtonSize = (MediaQuery.of(context).size.width / 320) * 40 > 80
         ? 80
         : (MediaQuery.of(context).size.width / 320) * 40;
-    infoBoxHeight = 180;
+    infoBoxHeight = 140;
     return Scaffold(
       body: DecoratedBox(
         decoration: const BoxDecoration(
@@ -41,7 +44,7 @@ class AlbumDetailedViewState extends State<AlbumDetailedView> {
               end: Alignment.bottomCenter,
               colors: [
                 AppColors.primary,
-                AppColors.primary,
+                AppColors.black,
               ],
               stops: [
                 0,
@@ -64,7 +67,9 @@ class AlbumDetailedViewState extends State<AlbumDetailedView> {
                   artist:  widget.albumModel!.artist ?? 'Unknown Artist',
                   numOfSongs:  widget.albumModel!.numOfSongs.toString(),
                 ),
-                const AlbumSongsList(),
+                 AlbumSongsList(
+                   songs: ref.read(albumDetailViewModel).localSongs,
+                 ),
               ],
             ),
             PlayPauseButton(
