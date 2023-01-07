@@ -16,9 +16,9 @@ class AlbumSongsList extends StatelessWidget {
 
     return SliverList(
       delegate: SliverChildBuilderDelegate(
-        childCount: 20,
+        childCount: songs.length,
         (context, index) {
-          final song = songs[0];
+          final song = songs[index];
 
           return  DecoratedBox(
             decoration: const BoxDecoration(
