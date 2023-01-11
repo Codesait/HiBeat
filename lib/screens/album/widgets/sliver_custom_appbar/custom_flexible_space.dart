@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hi_beat/src/components.dart';
+import 'package:on_audio_query/on_audio_query.dart';
 
 class AlbumImage extends StatelessWidget {
   const AlbumImage({
@@ -8,6 +10,8 @@ class AlbumImage extends StatelessWidget {
     required this.animateAlbumImage,
     required this.shrinkToMaxAppBarHeightRatio,
     required this.albumImageSize,
+    this.localSongId,
+    this.artworkType,
   }) : super(key: key);
 
   final EdgeInsets padding;
@@ -15,6 +19,8 @@ class AlbumImage extends StatelessWidget {
   final bool animateAlbumImage;
   final double shrinkToMaxAppBarHeightRatio;
   final double albumImageSize;
+  final int? localSongId;
+  final ArtworkType? artworkType;
 
   @override
   Widget build(BuildContext context) {
@@ -27,23 +33,12 @@ class AlbumImage extends StatelessWidget {
               : animateAlbumImage
               ? 1 - shrinkToMaxAppBarHeightRatio
               : 1,
-          child: Container(
+          child: CustomImageProvider(
             height: albumImageSize,
             width: albumImageSize,
-            decoration: const BoxDecoration(
-              color: Colors.deepPurpleAccent,
-              image: DecorationImage(
-                image: NetworkImage('https://api.baskadia.com/static/page/29284/3ebd6bdf-a105-4e41-8635-59ac86d382a0.xs.jpg'),
-                fit: BoxFit.cover,
-              ),
-              boxShadow:  [
-                BoxShadow(
-                  color: Colors.black87,
-                  spreadRadius: 1,
-                  blurRadius: 50,
-                ),
-              ],
-            ),
+            localSongId: localSongId,
+            artworkType: artworkType,
+            radius: 0,
           ),
         ));
   }

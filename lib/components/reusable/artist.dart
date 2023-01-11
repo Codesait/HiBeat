@@ -27,7 +27,7 @@ class ArtistWidget extends StatelessWidget {
             Expanded(
               flex: 3,
               child: CustomImageProvider(
-                localsongId: localArtistCoverId,
+                localSongId: localArtistCoverId,
                 artworkType: artworkType,
                 radius: 100,
               ),

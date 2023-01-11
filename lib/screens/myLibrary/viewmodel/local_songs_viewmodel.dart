@@ -20,7 +20,7 @@ class LocalSongsViewModel extends BaseViewModel {
 
   Future<void> fetchLocalSongs() async {
     await service.requestPermission();
-    // delaying fetching local songs for two seconds
+    // delaying fetching local songs for one seconds
     Future.delayed(const Duration(seconds: 1), () {
       service.getLocalSongs().whenComplete(() {
         _localSongs = service.fetchedSongs;

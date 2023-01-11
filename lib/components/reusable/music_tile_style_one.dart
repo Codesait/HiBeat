@@ -33,7 +33,7 @@ class MusicTileStyleOne extends StatelessWidget {
               height: 60,
               width: 60,
               radius: 8,
-              localsongId: localSongId,
+              localSongId: localSongId,
               artworkType: artworkType,
             ),
             const Gap(dimension: 15),

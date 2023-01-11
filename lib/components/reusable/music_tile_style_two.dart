@@ -34,7 +34,7 @@ class MusicTileStyleTwo extends StatelessWidget {
               flex: 3,
               child: CustomImageProvider(
                 radius: 2,
-                localsongId: localAlbumCoverId,
+                localSongId: localAlbumCoverId,
                 artworkType: artworkType,
               ),
             ),

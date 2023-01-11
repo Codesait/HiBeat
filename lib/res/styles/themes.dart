@@ -12,6 +12,7 @@ class AppTheme {
     hintColor: AppColors.grey,
     dividerColor: AppColors.primary,
     disabledColor: AppColors.grey,
+    canvasColor: AppColors.black,
     useMaterial3: true,
     toggleableActiveColor: AppColors.primary,
 
@@ -56,9 +57,10 @@ class AppTheme {
     backgroundColor: AppColors.primary,
     primaryColor: AppColors.primary,
     cardColor: AppColors.white,
-    hintColor: AppColors.grey,
+    hintColor: AppColors.lightGrey,
     dividerColor: AppColors.primary,
     disabledColor: AppColors.grey,
+    canvasColor: AppColors.lightGrey,
     useMaterial3: true,
     toggleableActiveColor: AppColors.primary,
 

@@ -22,4 +22,17 @@ class Functions {
       statusBarBrightness: Brightness.light,
     ));
   }
+
+  String? getNumberOfSongs(String? numOfSongs) {
+    if (numOfSongs != null) {
+      final songs = int.parse(numOfSongs!);
+      if (songs > 1) {
+        return '$numOfSongs songs';
+      } else {
+        return '$numOfSongs song';
+      }
+    } else {
+      return null;
+    }
+  }
 }

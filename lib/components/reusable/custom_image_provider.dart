@@ -14,7 +14,7 @@ class CustomImageProvider extends StatelessWidget {
     this.height,
     this.width,
     this.radius = 20,
-    this.localsongId,
+    this.localSongId,
     this.artworkType,
   }) : super(key: key);
 
@@ -23,7 +23,7 @@ class CustomImageProvider extends StatelessWidget {
   final double? height;
   final double? width;
   final double radius;
-  final int? localsongId;
+  final int? localSongId;
   final ArtworkType? artworkType;
 
   @override
@@ -43,9 +43,9 @@ class CustomImageProvider extends StatelessWidget {
                   fit: BoxFit.cover,
                 )
               : SongImageProvider(
-                  isOnline: (localsongId == null && imageUrl != null),
+                  isOnline: (localSongId == null && imageUrl != null),
                   imageUrl: imageUrl ?? '',
-                  localsongId: localsongId,
+                  localsongId: localSongId,
                   artworkType: artworkType,
                 )),
     );

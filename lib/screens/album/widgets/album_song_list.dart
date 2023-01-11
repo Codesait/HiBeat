@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/utils.dart';
 import 'package:hi_beat/src/components.dart';
 import 'package:hi_beat/src/res.dart';
 import 'package:on_audio_query/on_audio_query.dart';
@@ -14,15 +15,17 @@ class AlbumSongsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return SliverList(
+    final theme = Theme.of(context);
+
+    return songs.isNotEmpty ? SliverList(
       delegate: SliverChildBuilderDelegate(
         childCount: songs.length,
         (context, index) {
-          final song = songs[index];
 
+          final song = songs[index];
           return  DecoratedBox(
-            decoration: const BoxDecoration(
-              color: AppColors.black,
+            decoration:  BoxDecoration(
+              color: theme.canvasColor,
             ),
             child: MusicTileStyleOne(
               songTitle: song.title,
@@ -32,6 +35,11 @@ class AlbumSongsList extends StatelessWidget {
             ),
           );
         }
+      ),
+    ): const  SliverToBoxAdapter(
+      child:  ViewsParentContainer(
+        notFound: true,
+          child:  SizedBox.shrink(),
       ),
     );
   }

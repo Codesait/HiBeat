@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hi_beat/src/res.dart';
 import 'package:hi_beat/src/screens.dart';
+import 'package:hi_beat/src/utils.dart';
+import 'package:on_audio_query/on_audio_query.dart';
 
 class SliverCustomAppBar extends StatelessWidget {
   const SliverCustomAppBar({
@@ -8,26 +10,32 @@ class SliverCustomAppBar extends StatelessWidget {
     required this.maxAppBarHeight,
     required this.minAppBarHeight,
     required this.appBarTitle,
+    this.artworkType,
+    this.localSongId,
   }) : super(key: key);
 
   final double maxAppBarHeight;
   final double minAppBarHeight;
   final String appBarTitle;
+  final int? localSongId;
+  final ArtworkType? artworkType;
 
   @override
   Widget build(BuildContext context) {
     final extraTopPadding = MediaQuery.of(context).size.height * 0.05;
     //app bar content padding
-    final padding = EdgeInsets.only(
-        top: MediaQuery.of(context).padding.top,
-        right: 10,
-        left: 10);
+    final padding =  EdgeInsets.only(
+      top:  MediaQuery.of(context).padding.top,
+        right: 0,
+        left: 0,
+    );
 
     return SliverPersistentHeader(
         pinned: true,
         delegate: SliverAppBarDelegate(
             maxHeight: maxAppBarHeight,
             minHeight: minAppBarHeight,
+
             builder: (context, shrinkOffset) {
 
               /*
@@ -44,7 +52,7 @@ class SliverCustomAppBar extends StatelessWidget {
                   maxAppBarHeight
                   : null;
               final albumImageSize =
-                  MediaQuery.of(context).size.height * 0.3 - shrinkOffset / 2;
+                  MediaQuery.of(context).size.height * 1.0 - shrinkOffset / 2;
               final showFixedAppBar = shrinkToMaxAppBarHeightRatio > 0.7;
               final double titleOpacity = (showFixedAppBar
                   ? 1 - (maxAppBarHeight - shrinkOffset) / minAppBarHeight
@@ -65,6 +73,8 @@ class SliverCustomAppBar extends StatelessWidget {
                       shrinkToMaxAppBarHeightRatio:
                       shrinkToMaxAppBarHeightRatio,
                       albumImageSize: albumImageSize,
+                      localSongId: localSongId,
+                      artworkType: artworkType,
                     ),
                   ),
                   AnimatedContainer(

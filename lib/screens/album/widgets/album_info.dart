@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hi_beat/src/components.dart';
+import 'package:hi_beat/src/res.dart';
+import 'package:hi_beat/src/utils.dart';
 
 class AlbumInfo extends StatelessWidget {
   const AlbumInfo({
@@ -21,51 +23,41 @@ class AlbumInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
 
 
-    String? numberOfSongs() {
-      if (numOfSongs != null) {
-        final songs = int.parse(numOfSongs!);
-        if (songs > 1) {
-          return '$numOfSongs songs';
-        } else {
-          return '$numOfSongs song';
-        }
-      } else {
-        return null;
-      }
-    }
 
     return SliverToBoxAdapter(
       child: DecoratedBox(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
                 Colors.transparent,
-                Colors.black87,
+                theme.cardColor,
               ],
-              stops: [
-                0.00022,
+              stops: const [
+                1.0022,
                 1.0,
               ]),
         ),
-        child: Container(
-          // height: infoBoxHeight,
-          padding: const EdgeInsets.all(5),
+        child: SizedBox(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: isOfflinePlaylist ? MainAxisAlignment.end: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: isOfflinePlaylist
+                  ? MainAxisAlignment.end
+                  : MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   albumTitle,
-                  style: const TextStyle(
-                      color: Colors.white,
+                  style: theme.textTheme.bodyText1!.copyWith(
                       fontSize: 20,
-                      fontWeight: FontWeight.bold),
+                      fontWeight: FontWeight.bold,
+                      color:  AppColors.white
+                          ),
                 ),
                 const Gap(
                   dimension: 5,
@@ -85,8 +77,9 @@ class AlbumInfo extends StatelessWidget {
                     Text(
                       artist,
                       style: const TextStyle(
-                        color: Colors.white,
+                        color: AppColors.grey,
                         fontWeight: FontWeight.bold,
+                        fontSize: 18
                       ),
                     ),
                     const SizedBox.shrink()
@@ -95,35 +88,39 @@ class AlbumInfo extends StatelessWidget {
                 const Gap(
                   dimension: 5,
                 ),
+
+                /*This is for displaying number of
+                 songs in an album or playlist
+                */
                 Text(
                   (albumDate ?? '') +
                       (albumDate == null ? '' : '.') +
-                      (numberOfSongs() ?? ''),
-                  style: const TextStyle(
-                    color: Colors.white70,
+                      (Functions().getNumberOfSongs(numOfSongs) ?? ''),
+                  style: theme.textTheme.subtitle1!.copyWith(
+                    color: AppColors.grey,
                   ),
                 ),
                 const Gap(
                   dimension: 5,
                 ),
+
+                /* Row of album actions*/
                 Visibility(
                   visible: !isOfflinePlaylist,
                   child: Row(
                     children: [
                       IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.favorite_border,
-                              color: Colors.white,
-                            )),
-
-                       IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.download_outlined,
-                              color: Colors.white,
-                            )),
-
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.favorite_border,
+                            color: Colors.white,
+                          )),
+                      IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.download_outlined,
+                            color: Colors.white,
+                          )),
                       IconButton(
                           onPressed: () {},
                           icon: const Icon(

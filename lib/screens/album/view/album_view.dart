@@ -24,7 +24,7 @@ class AlbumDetailedViewState extends ConsumerState<AlbumDetailedView> {
   @override
   void initState() {
     super.initState();
-    ref.read(albumDetailViewModel).fetchAlbumSongs(widget.albumModel!.id);
+    ref.read(albumDetailViewModel).fetchAlbumSongs(id: widget.albumModel!.id);
     _scrollController = ScrollController();
   }
 
@@ -36,19 +36,21 @@ class AlbumDetailedViewState extends ConsumerState<AlbumDetailedView> {
         ? 80
         : (MediaQuery.of(context).size.width / 320) * 40;
     infoBoxHeight = 140;
+
+    final theme = Theme.of(context);
     return Scaffold(
       body: DecoratedBox(
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
                 AppColors.primary,
-                AppColors.black,
+               theme.canvasColor,
               ],
-              stops: [
-                0,
-                0.7,
+              stops: const[
+                0.5,
+                0.6,
               ]),
         ),
         child: Stack(
@@ -60,6 +62,8 @@ class AlbumDetailedViewState extends ConsumerState<AlbumDetailedView> {
                   maxAppBarHeight: maxAppBarHeight,
                   minAppBarHeight: minAppBarHeight,
                   appBarTitle: widget.albumModel!.album,
+                  localSongId: widget.albumModel!.id,
+                  artworkType: ArtworkType.ALBUM,
                 ),
                 AlbumInfo(
                   infoBoxHeight: infoBoxHeight,
