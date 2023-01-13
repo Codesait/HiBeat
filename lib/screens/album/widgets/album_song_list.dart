@@ -17,6 +17,8 @@ class AlbumSongsList extends StatelessWidget {
 
     final theme = Theme.of(context);
 
+    print('songs from sliverlist: $songs');
+
     return songs.isNotEmpty ? SliverList(
       delegate: SliverChildBuilderDelegate(
         childCount: songs.length,

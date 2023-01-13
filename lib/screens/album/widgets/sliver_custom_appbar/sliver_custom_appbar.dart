@@ -25,7 +25,7 @@ class SliverCustomAppBar extends StatelessWidget {
     final extraTopPadding = MediaQuery.of(context).size.height * 0.05;
     //app bar content padding
     final padding =  EdgeInsets.only(
-      top:  MediaQuery.of(context).padding.top,
+      top: extraTopPadding,
         right: 0,
         left: 0,
     );
@@ -57,9 +57,6 @@ class SliverCustomAppBar extends StatelessWidget {
               final double titleOpacity = (showFixedAppBar
                   ? 1 - (maxAppBarHeight - shrinkOffset) / minAppBarHeight
                   : 0);
-
-              //print(titleOpacity);
-
 
               return Stack(
                 alignment: Alignment.center,

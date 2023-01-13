@@ -6,7 +6,10 @@ import 'package:hi_beat/src/screens.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class AlbumDetailedView extends ConsumerStatefulWidget {
-  const AlbumDetailedView({Key? key, this.albumModel,}) : super(key: key);
+  const AlbumDetailedView({
+    Key? key,
+    this.albumModel,
+  }) : super(key: key);
   final AlbumModel? albumModel;
 
   @override
@@ -38,17 +41,18 @@ class AlbumDetailedViewState extends ConsumerState<AlbumDetailedView> {
     infoBoxHeight = 140;
 
     final theme = Theme.of(context);
+    final provider = ref.watch(albumDetailViewModel);
     return Scaffold(
       body: DecoratedBox(
-        decoration:  BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
                 AppColors.primary,
-               theme.canvasColor,
+                theme.canvasColor,
               ],
-              stops: const[
+              stops: const [
                 0.5,
                 0.6,
               ]),
@@ -68,12 +72,12 @@ class AlbumDetailedViewState extends ConsumerState<AlbumDetailedView> {
                 AlbumInfo(
                   infoBoxHeight: infoBoxHeight,
                   albumTitle: widget.albumModel!.album,
-                  artist:  widget.albumModel!.artist ?? 'Unknown Artist',
-                  numOfSongs:  widget.albumModel!.numOfSongs.toString(),
+                  artist: widget.albumModel!.artist ?? 'Unknown Artist',
+                  numOfSongs: widget.albumModel!.numOfSongs.toString(),
                 ),
-                 AlbumSongsList(
-                   songs: ref.read(albumDetailViewModel).localSongs,
-                 ),
+                AlbumSongsList(
+                  songs: provider.localSongs,
+                ),
               ],
             ),
             PlayPauseButton(

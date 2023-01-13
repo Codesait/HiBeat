@@ -16,22 +16,17 @@ class AlbumDetailViewModel extends BaseViewModel {
   List<SongModel> get localSongs => _localSongs;
 
   Future<void> fetchAlbumSongs({required int id}) async {
-    Future.delayed(const Duration(seconds: 3), () {
-      try{
-        service.getAlbumSongs(id).then((res) {
-          if(res.isNotEmpty){
-            _localSongs = res;
-            notifyListeners();
-          }else{
-
-          }
-
-        });
-
-      }catch(e){
-        log(e.toString());
+    await service.getAlbumSongs(id).then((res) {
+      if(res.isNotEmpty){
+        _localSongs = res;
+        log(localSongs.toString());
       }
+
+    }).whenComplete(() {
+      notifyListeners();
     });
+
+
 
 
   }
