@@ -23,18 +23,23 @@ class PlayerAppBar extends StatelessWidget {
         child: SizedBox(
           width: fullWidth(context),
           child: Padding(
-            padding: const EdgeInsets.all(10),
+            padding:  EdgeInsets.only(
+              top: MediaQuery.of(context).padding.top,
+              left: 10,
+              right: 10,
+            ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                // collapse button
                 CircleAvatar(
-                  radius: 12,
+                  radius: 15,
                   backgroundColor: Colors.white,
                   child: FittedBox(
                     child: IconButton(
                       onPressed: onMinimizeBtnTapped,
-                      iconSize: 30,
+                      iconSize: 35,
                       splashRadius: 20,
                       icon: const Icon(
                         Icons.expand_more_rounded,
@@ -42,6 +47,14 @@ class PlayerAppBar extends StatelessWidget {
                       ),
                     ),
                   ),
+                ),
+
+                const Text(
+                  'Now Playing',style: TextStyle(fontSize: 20),
+                ),
+
+                const SizedBox.square(
+                  dimension: 30,
                 ),
               ],
             ),

@@ -5,10 +5,10 @@ class MainPlayerSongDesc extends StatelessWidget {
   const MainPlayerSongDesc({
     super.key,
     this.artist = 'Unknown',
-    this.songtitle = 'Unknown',
+    this.songTitle = 'Unknown',
   });
 
-  final String songtitle;
+  final String songTitle;
   final String artist;
 
   @override
@@ -21,8 +21,7 @@ class MainPlayerSongDesc extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-
-          title(songtitle),
+          title(songTitle),
           const SizedBox(height: 5.0),
           artistName(artist),
           const SizedBox(height: 5.0),
@@ -31,7 +30,7 @@ class MainPlayerSongDesc extends StatelessWidget {
     );
   }
 
-    Widget title(String title) {
+  Widget title(String title) {
     return Text(
       title,
       maxLines: 1,
@@ -39,14 +38,28 @@ class MainPlayerSongDesc extends StatelessWidget {
       overflow: TextOverflow.fade,
       style: const TextStyle(
         color: Colors.white,
+        fontSize: 20,
         fontWeight: FontWeight.w800,
       ),
     );
   }
 
   Widget artistName(String artist) {
-    return Text(
-      artist,
+    return Text.rich(
+       TextSpan(
+          children: [
+            const TextSpan(
+              text: 'By: ',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w800,
+                )
+            ),
+            TextSpan(
+              text: artist,
+            ),
+          ],
+          ),
       maxLines: 2,
       textAlign: TextAlign.start,
       overflow: TextOverflow.ellipsis,
