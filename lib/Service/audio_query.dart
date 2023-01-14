@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:on_audio_query/on_audio_query.dart';
 
 class OfflineAudioQuery {
@@ -164,4 +166,9 @@ class OfflineAudioQuery {
     }
     return songsMap;
   }
+
+  ///[getImageFromLocalStg] is getting the image data from local storage using audio query
+Future<Uint8List?> getImageFromLocalStg(int songId,ArtworkType artworkType)async{
+    return audioQuery.queryArtwork(songId, artworkType, size: 350) ;
+}
 }

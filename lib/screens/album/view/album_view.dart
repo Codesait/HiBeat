@@ -1,9 +1,14 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hi_beat/screens/album/viewModel/albumViewModel.dart';
+import 'package:hi_beat/src/components.dart';
 import 'package:hi_beat/src/res.dart';
 import 'package:hi_beat/src/screens.dart';
+import 'package:hi_beat/src/utils.dart';
 import 'package:on_audio_query/on_audio_query.dart';
+import 'package:palette_generator/palette_generator.dart';
 
 class AlbumDetailedView extends ConsumerStatefulWidget {
   const AlbumDetailedView({
@@ -42,54 +47,82 @@ class AlbumDetailedViewState extends ConsumerState<AlbumDetailedView> {
 
     final theme = Theme.of(context);
     final provider = ref.watch(albumDetailViewModel);
-    return Scaffold(
-      body: DecoratedBox(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                AppColors.primary,
-                theme.canvasColor,
-              ],
-              stops: const [
-                0.5,
-                0.6,
-              ]),
+
+    return FutureBuilder<Uint8List?>(
+        future: provider.service.getImageFromLocalStg(
+          widget.albumModel!.id,
+          ArtworkType.ALBUM,
         ),
-        child: Stack(
-          children: [
-            CustomScrollView(
-              controller: _scrollController,
-              slivers: [
-                SliverCustomAppBar(
-                  maxAppBarHeight: maxAppBarHeight,
-                  minAppBarHeight: minAppBarHeight,
-                  appBarTitle: widget.albumModel!.album,
-                  localSongId: widget.albumModel!.id,
-                  artworkType: ArtworkType.ALBUM,
-                ),
-                AlbumInfo(
-                  infoBoxHeight: infoBoxHeight,
-                  albumTitle: widget.albumModel!.album,
-                  artist: widget.albumModel!.artist ?? 'Unknown Artist',
-                  numOfSongs: widget.albumModel!.numOfSongs.toString(),
-                ),
-                AlbumSongsList(
-                  songs: provider.localSongs,
-                ),
-              ],
-            ),
-            PlayPauseButton(
-              scrollController: _scrollController,
-              maxAppBarHeight: maxAppBarHeight,
-              minAppBarHeight: minAppBarHeight,
-              playPauseButtonSize: playPauseButtonSize,
-              infoBoxHeight: infoBoxHeight,
-            ),
-          ],
-        ),
-      ),
-    );
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return FutureBuilder<PaletteGenerator>(
+                future:
+                    Functions().colorPaletteGeneratorFromImage(snapshot.data!),
+                builder: (
+                  BuildContext context,
+                  AsyncSnapshot<PaletteGenerator> snapshot,
+                ) {
+                  final viewPrimaryColor = snapshot.data?.dominantColor?.color;
+                  return Scaffold(
+                    body: DecoratedBox(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              snapshot.hasData
+                                  ? viewPrimaryColor!
+                                  : AppColors.grey,
+                              theme.canvasColor,
+                            ],
+                            stops: const [
+                              0.5,
+                              0.6,
+                            ]),
+                      ),
+                      child: Stack(
+                        children: [
+                          CustomScrollView(
+                            controller: _scrollController,
+                            slivers: [
+                              SliverCustomAppBar(
+                                maxAppBarHeight: maxAppBarHeight,
+                                minAppBarHeight: minAppBarHeight,
+                                appBarTitle: widget.albumModel!.album,
+                                localSongId: widget.albumModel!.id,
+                                artworkType: ArtworkType.ALBUM,
+                              ),
+                              AlbumInfo(
+                                infoBoxHeight: infoBoxHeight,
+                                albumTitle: widget.albumModel!.album,
+                                artist: widget.albumModel!.artist ??
+                                    'Unknown Artist',
+                                numOfSongs:
+                                    widget.albumModel!.numOfSongs.toString(),
+                              ),
+                              AlbumSongsList(
+                                songs: provider.localSongs,
+                              ),
+                            ],
+                          ),
+                          PlayPauseButton(
+                            scrollController: _scrollController,
+                            maxAppBarHeight: maxAppBarHeight,
+                            minAppBarHeight: minAppBarHeight,
+                            playPauseButtonSize: playPauseButtonSize,
+                            infoBoxHeight: infoBoxHeight,
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                });
+          } else {
+            return const ViewsParentContainer(
+              notFound: true,
+              child: SizedBox.shrink(),
+            );
+          }
+        });
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hi_beat/src/res.dart';
 import 'package:hi_beat/src/screens.dart';
-import 'package:hi_beat/src/utils.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class SliverCustomAppBar extends StatelessWidget {
@@ -63,7 +62,7 @@ class SliverCustomAppBar extends StatelessWidget {
                 children: [
                   Positioned(
                     top: albumPositionFromTop,
-                    child: AlbumImage(
+                    child:AlbumImage(
                       padding: padding,
                       animateOpacityToZero: animateOpacityToZero,
                       animateAlbumImage: animateAlbumImage,

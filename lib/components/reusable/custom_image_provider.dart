@@ -45,7 +45,7 @@ class CustomImageProvider extends StatelessWidget {
               : SongImageProvider(
                   isOnline: (localSongId == null && imageUrl != null),
                   imageUrl: imageUrl ?? '',
-                  localsongId: localSongId,
+                  localSongId: localSongId,
                   artworkType: artworkType,
                 )),
     );
@@ -57,12 +57,12 @@ class SongImageProvider extends StatelessWidget {
     super.key,
     this.isOnline = false,
     this.imageUrl,
-    this.localsongId,
+    this.localSongId,
     this.artworkType,
   });
   final bool isOnline;
   final String? imageUrl;
-  final int? localsongId;
+  final int? localSongId;
   final ArtworkType? artworkType;
 
   @override
@@ -75,7 +75,7 @@ class SongImageProvider extends StatelessWidget {
             imageUrl: imageUrl!,
           )
         : QueryArtworkWidget(
-            id: localsongId!,
+            id: localSongId!,
             type: artworkType!,
             artworkBorder: BorderRadius.circular(7.0),
             keepOldArtwork: true,
