@@ -4,30 +4,34 @@ import 'package:mini_player/utils.dart';
 import 'pause_play_widget.dart';
 
 class AudioControllers extends StatelessWidget {
-  const AudioControllers({
-    Key? key,
-    required this.isMiniPlayer,
-    this.onSkipNext,
-    this.onSkipPrevious,
-    this.currentRepeatMode,
-    this.index = 0,
-    this.handleReapeat,
-    this.handleShuffle,
-    this.shuffle = false,
-    this.isPlaying = false,
-    this.isLoadingOrBuffering = false,
-    this.positionTag = 'Main_player'
-  }) : super(key: key);
+  const AudioControllers(
+      {Key? key,
+      required this.isMiniPlayer,
+      this.onSkipNext,
+      this.onSkipPrevious,
+      this.currentRepeatMode,
+      this.index = 0,
+      this.handleRepeat,
+      this.handleShuffle,
+      this.shuffle = false,
+      this.isPlaying = false,
+      this.isLoadingOrBuffering = false,
+      this.canSkip = false,
+      this.canSkipPrevious = false,
+      this.positionTag = 'Main_player',})
+      : super(key: key);
   final VoidCallback? onSkipNext;
   final VoidCallback? onSkipPrevious;
   final String? currentRepeatMode;
   final bool shuffle;
-  final VoidCallback? handleReapeat;
+  final VoidCallback? handleRepeat;
   final VoidCallback? handleShuffle;
   final int index;
   final bool isMiniPlayer;
   final bool isPlaying;
   final bool isLoadingOrBuffering;
+  final bool canSkip;
+  final bool canSkipPrevious;
   final String positionTag;
 
   @override
@@ -41,6 +45,8 @@ class AudioControllers extends StatelessWidget {
     final double btnSize = isMiniPlayer ? 45 : 50;
     final double indicatorSize = isMiniPlayer ? 30 : 60.5;
     final double strokeWidth = isMiniPlayer ? 2.0 : 4.0;
+
+    final theme = Theme.of(context);
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
@@ -65,9 +71,7 @@ class AudioControllers extends StatelessWidget {
               : mediaAction(
                   onPressed: handleShuffle,
                   iconData: Icons.shuffle_rounded,
-                  iconColor: shuffle
-                      ? Theme.of(context).colorScheme.secondary
-                      : Colors.grey,
+                  iconColor: shuffle ? theme.canvasColor : Colors.grey,
                 ),
 
           //* if state of player is mini player, this skip to prev icon button will
@@ -77,7 +81,7 @@ class AudioControllers extends StatelessWidget {
               : mediaAction(
                   onPressed: onSkipPrevious,
                   iconData: Icons.skip_previous_rounded,
-                  
+                  iconColor: canSkipPrevious ? theme.canvasColor : Colors.grey,
                 ),
 
           //* if state of player is mini player, this shuffle icon will
@@ -120,16 +124,19 @@ class AudioControllers extends StatelessWidget {
           isMiniPlayer
               ? const SizedBox()
               : mediaAction(
-                  onPressed: onSkipNext, iconData: Icons.skip_next_rounded),
+                  onPressed: onSkipNext,
+                  iconData: Icons.skip_next_rounded,
+                  iconColor: canSkip ? theme.canvasColor: Colors.grey,
+                ),
 
           isMiniPlayer
               ? const SizedBox()
               : mediaAction(
-                  onPressed: handleReapeat,
+                  onPressed: handleRepeat,
                   iconData: icons[index],
                   iconColor: currentRepeatMode == 'None'
-                      ? Colors.white60
-                      : Colors.white,
+                      ? Colors.grey
+                      : theme.canvasColor,
                 ),
         ],
       ),

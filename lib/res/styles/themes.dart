@@ -12,7 +12,7 @@ class AppTheme {
     hintColor: AppColors.grey,
     dividerColor: AppColors.primary,
     disabledColor: AppColors.grey,
-    canvasColor: AppColors.black,
+    canvasColor: AppColors.white,
     useMaterial3: true,
     toggleableActiveColor: AppColors.primary,
 
@@ -60,7 +60,7 @@ class AppTheme {
     hintColor: AppColors.lightGrey,
     dividerColor: AppColors.primary,
     disabledColor: AppColors.grey,
-    canvasColor: AppColors.lightGrey,
+    canvasColor: AppColors.grey,
     useMaterial3: true,
     toggleableActiveColor: AppColors.primary,
 
@@ -89,7 +89,7 @@ class AppTheme {
           color: AppColors.white, fontWeight: FontWeight.w600, fontSize: 15),
       headline5: TextStyle(color: AppColors.black, fontWeight: FontWeight.bold),
       headline6: TextStyle(color: AppColors.black),
-      bodyText1: TextStyle(color: AppColors.black),
+      bodyText1: TextStyle(color: Colors.black45),
       bodyText2: TextStyle(color: AppColors.black, fontWeight: FontWeight.bold),
       overline: TextStyle(
         color: AppColors.white,

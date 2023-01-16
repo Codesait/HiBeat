@@ -25,8 +25,6 @@ class AlbumInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-
-
     return SliverToBoxAdapter(
       child: DecoratedBox(
         decoration: BoxDecoration(
@@ -53,11 +51,11 @@ class AlbumInfo extends StatelessWidget {
               children: [
                 Text(
                   albumTitle,
-                  style: theme.textTheme.bodyText1!.copyWith(
+                  style: theme.textTheme.bodyText2!.copyWith(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color:  AppColors.white
-                          ),
+                  ),
                 ),
                 const Gap(
                   dimension: 5,
@@ -76,8 +74,7 @@ class AlbumInfo extends StatelessWidget {
                     Gap(dimension: !isOfflinePlaylist ? 5 : 0),
                     Text(
                       artist,
-                      style: const TextStyle(
-                        color: AppColors.grey,
+                      style: theme.textTheme.bodyText1!.copyWith(
                         fontWeight: FontWeight.bold,
                         fontSize: 18
                       ),
@@ -96,8 +93,8 @@ class AlbumInfo extends StatelessWidget {
                   (albumDate ?? '') +
                       (albumDate == null ? '' : '.') +
                       (Functions().getNumberOfSongs(numOfSongs) ?? ''),
-                  style: theme.textTheme.subtitle1!.copyWith(
-                    color: AppColors.grey,
+                  style: theme.textTheme.bodyText1!.copyWith(
+                    fontSize: 12,
                   ),
                 ),
                 const Gap(

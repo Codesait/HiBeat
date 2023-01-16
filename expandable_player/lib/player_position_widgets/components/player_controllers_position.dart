@@ -16,17 +16,23 @@ class PlayerControllersPosition extends StatelessWidget {
     return Positioned(
       height: fullHeight(context) / 2.5,
       width: fullWidth(context),
-      bottom: controller.defaultControllersTopMargin(),
+      bottom: controller.defaultControllersTopMargin,
       child: Opacity(
         opacity: animationController.value,
         child: Container(
           alignment: Alignment.bottomCenter,
           width: fullWidth(context),
           child: Column(
-            children: const [
-              MainPlayerSongDesc(),
-              SeekBarStreamWrap(),
-              AudioControllers(isMiniPlayer: false)
+            children:  [
+              const MainPlayerSongDesc(),
+              const SeekBarStreamWrap(),
+              AudioControllers(
+                isMiniPlayer: false,
+                onSkipNext: (){},
+                onSkipPrevious: (){},
+                handleRepeat: (){},
+                handleShuffle: (){},
+              )
             ],
           ),
         ),

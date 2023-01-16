@@ -93,8 +93,21 @@ class MiniPlayerSongTitle extends StatelessWidget {
   }
 
   Widget artistName(String artist) {
-    return Text(
-      artist,
+    return Text.rich(
+      TextSpan(
+        children: [
+          const TextSpan(
+              text: 'By: ',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w800,
+              )
+          ),
+          TextSpan(
+            text: artist,
+          ),
+        ],
+      ),
       maxLines: 2,
       textAlign: TextAlign.start,
       overflow: TextOverflow.ellipsis,

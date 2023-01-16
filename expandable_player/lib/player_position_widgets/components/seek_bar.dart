@@ -44,8 +44,8 @@ class SeekBarState extends State<SeekBar> {
           SliderTheme(
             data: _sliderThemeData.copyWith(
               thumbShape: HiddenThumbComponentShape(),
-              activeTrackColor: Colors.white54,
-              inactiveTrackColor: Colors.white30,
+              activeTrackColor: Colors.white,
+              inactiveTrackColor: Colors.grey.shade100,
               trackHeight: 4.0,
               trackShape: const RectangularSliderTrackShape(),
             ),
@@ -74,7 +74,7 @@ class SeekBarState extends State<SeekBar> {
           SliderTheme(
             data: _sliderThemeData.copyWith(
               inactiveTrackColor: Colors.transparent,
-              activeTrackColor: Colors.white,
+              activeTrackColor: Colors.green,
               thumbColor: Colors.white,
               trackHeight: 4.0,
             ),
@@ -104,7 +104,7 @@ class SeekBarState extends State<SeekBar> {
             bottom: 0.0,
             child: Text(
               '$_position'.formatSeekStreamPositionDuration() ?? '$_position',
-              style: Theme.of(context).textTheme.overline,
+              style: Theme.of(context).textTheme.bodyText2,
             ),
           ),
           Positioned(
@@ -112,7 +112,7 @@ class SeekBarState extends State<SeekBar> {
             bottom: 0.0,
             child: Text(
               '$_duration'.formatSeekStreamPositionDuration() ?? '$_duration',
-              style: Theme.of(context).textTheme.overline,
+              style: Theme.of(context).textTheme.bodyText2,
             ),
           ),
         ],

@@ -21,7 +21,7 @@ class PlayerSongArtPosition extends StatelessWidget {
         return controller.defaultSongArtSize;
       } else {
         return fullHeight(context) > 700
-            ? fullHeight(context) / 1.7
+            ? fullHeight(context) / 2.2
             : controller.defaultSongArtSize;
       }
     }
@@ -29,7 +29,8 @@ class PlayerSongArtPosition extends StatelessWidget {
     return Positioned(
       height: artSize(),
       width: controller.defaultSongArtSize,
-      top: controller.defaultArtTopMargin(),
+      top: controller.defaultArtTopMargin,
+      left: controller.defaultArtLeftMargin,
       child: songArtWidget,
     );
   }

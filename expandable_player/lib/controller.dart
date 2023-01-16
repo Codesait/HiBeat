@@ -28,12 +28,19 @@ class ExpandablePlayerController extends ChangeNotifier {
   }
 
   // default style variables
-  double? get defaultSongArtSize => lerp(_artStartSize, fullWidth(context));
+  double? get defaultSongArtSize =>
+      lerp(_artStartSize, fullWidth(context) / 1.3);
 
-  double defaultArtTopMargin() => lerp(_artStartMarginTop, 0)!;
+  double get defaultArtTopMargin => lerp(_artStartMarginTop, 100)!;
 
-  double defaultControllersTopMargin() =>
-      lerp(_playerControllersStartMarginTop, 0)!;
+  double get defaultControllersTopMargin => lerp(
+        _playerControllersStartMarginTop,
+        0,
+      )!;
+
+  double get defaultArtRightMargin => lerp( MediaQuery.of(context).size.width/0.2, 7)!;
+
+  double get defaultArtLeftMargin => lerp(0, MediaQuery.of( context).size.width/8.5)!;
 
   double playerCollapsedPosition() {
     if (fullHeight(context) == 780) {

@@ -35,6 +35,9 @@ class _ExpandablePlayerState extends State<ExpandablePlayer> {
       context,
       widget.animationController,
     );
+    final theme = Theme.of(context);
+
+
 
     return WillPopScope(
         child: AnimatedBuilder(
@@ -58,7 +61,7 @@ class _ExpandablePlayerState extends State<ExpandablePlayer> {
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 300),
                     decoration: BoxDecoration(
-                        color: Colors.green,
+                        color: controller.isMiniPlayer ? Colors.green : theme.cardColor,
                         borderRadius:
                             BorderRadius.circular(controller.miniPlayerRadius)),
                     margin: EdgeInsets.symmetric(
@@ -81,7 +84,7 @@ class _ExpandablePlayerState extends State<ExpandablePlayer> {
                           songArtWidget: const Placeholder(),
                         ),
 
-                        //* poistion of the song description when player window is collapsed
+                        //* position of the song description when player window is collapsed
                         MiniPlayerSongDsc(
                           controller: controller,
                         ),
