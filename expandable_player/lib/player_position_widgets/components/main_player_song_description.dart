@@ -13,6 +13,7 @@ class MainPlayerSongDesc extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       height: 90,
       width: fullWidth(context),
@@ -21,37 +22,35 @@ class MainPlayerSongDesc extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          title(songTitle),
+          title(songTitle,theme),
           const SizedBox(height: 5.0),
-          artistName(artist),
+          artistName(artist, theme),
           const SizedBox(height: 5.0),
         ],
       ),
     );
   }
 
-  Widget title(String title) {
+  Widget title(String title, ThemeData theme) {
     return Text(
       title,
       maxLines: 1,
       textAlign: TextAlign.start,
       overflow: TextOverflow.fade,
-      style: const TextStyle(
-        color: Colors.white,
+      style:  theme.textTheme.bodyText2!.copyWith(
         fontSize: 20,
         fontWeight: FontWeight.w800,
       ),
     );
   }
 
-  Widget artistName(String artist) {
+  Widget artistName(String artist, ThemeData theme) {
     return Text.rich(
        TextSpan(
           children: [
-            const TextSpan(
+             TextSpan(
               text: 'By: ',
-                style: TextStyle(
-                  color: Colors.white,
+                style: theme.textTheme.bodyText2!.copyWith(
                   fontWeight: FontWeight.w800,
                 )
             ),
@@ -63,8 +62,7 @@ class MainPlayerSongDesc extends StatelessWidget {
       maxLines: 2,
       textAlign: TextAlign.start,
       overflow: TextOverflow.ellipsis,
-      style: const TextStyle(
-        color: Colors.white54,
+      style: theme.textTheme.bodyText2!.copyWith(
         fontSize: 12,
         fontWeight: FontWeight.w500,
       ),
