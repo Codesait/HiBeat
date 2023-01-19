@@ -73,7 +73,7 @@ class AlbumDetailedViewState extends ConsumerState<AlbumDetailedView> {
                               snapshot.hasData
                                   ? viewPrimaryColor!
                                   : AppColors.grey,
-                              theme.canvasColor,
+                              theme.scaffoldBackgroundColor,
                             ],
                             stops: const [
                               0.5,

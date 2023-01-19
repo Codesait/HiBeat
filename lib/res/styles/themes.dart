@@ -53,7 +53,7 @@ class AppTheme {
   /// light theme data
   static ThemeData lightTheme = ThemeData(
     fontFamily: 'Quicksand',
-    scaffoldBackgroundColor: AppColors.white,
+    scaffoldBackgroundColor: AppColors.lightGrey,
     backgroundColor: AppColors.primary,
     primaryColor: AppColors.primary,
     cardColor: AppColors.white,

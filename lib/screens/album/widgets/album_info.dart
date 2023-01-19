@@ -95,6 +95,7 @@ class AlbumInfo extends StatelessWidget {
                       (Functions().getNumberOfSongs(numOfSongs) ?? ''),
                   style: theme.textTheme.bodyText1!.copyWith(
                     fontSize: 12,
+                    fontWeight: FontWeight.bold
                   ),
                 ),
                 const Gap(

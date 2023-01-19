@@ -27,7 +27,7 @@ class AlbumSongsList extends StatelessWidget {
           final song = songs[index];
           return  DecoratedBox(
             decoration:  BoxDecoration(
-              color: theme.canvasColor,
+              color: theme.scaffoldBackgroundColor,
             ),
             child: MusicTileStyleOne(
               songTitle: song.title,
